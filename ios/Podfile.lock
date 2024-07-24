@@ -1,4 +1,7 @@
 PODS:
+  - connectivity_plus (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - Flutter (1.0.0)
   - flutter_secure_storage (6.0.0):
     - Flutter
@@ -12,6 +15,7 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
   - Flutter (from `Flutter`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
@@ -19,6 +23,8 @@ DEPENDENCIES:
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
 
 EXTERNAL SOURCES:
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/darwin"
   Flutter:
     :path: Flutter
   flutter_secure_storage:
@@ -31,6 +37,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/darwin"
 
 SPEC CHECKSUMS:
+  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
   image_picker_ios: b545a5f16c0fa88e3ecbbce3ed4de45567a8ec18

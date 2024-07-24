@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jobhunt/data/local/sharedservice.dart';
-import 'package:jobhunt/presentation/authentication/views/log_in_screen.dart';
-import 'package:jobhunt/presentation/authentication/views/register_screen.dart';
-import 'package:jobhunt/presentation/home/homescreen.dart';
-import 'package:jobhunt/presentation/vacancy/vacancy_detail_screen.dart';
+import 'package:jobhunt/repository/localauthrepository.dart';
+import 'package:jobhunt/views/homescreen.dart';
+import 'package:jobhunt/views/log_in_screen.dart';
+import 'package:jobhunt/views/register_screen.dart';
+
 
 
 final GlobalKey<NavigatorState>navigatorKey=GlobalKey<NavigatorState>();
 
-Widget _defaultHome=const SignInScreen();
-bool show=true;
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  String? result=await SharedService.isLoggedIn();
-  if(result!=null){
-    _defaultHome=HomeScreen();
-  }
+  
  
   runApp(const ProviderScope(child:  MyApp()));
 }
@@ -44,11 +40,10 @@ class MyApp extends StatelessWidget {
         ),),
  
       routes: {
-        '/':(context) => _defaultHome,
+        '/':(context) => SignInScreen(),
         '/signInScreen':(context) =>const SignInScreen(),
-        '/homeScreen':(context) =>const HomeScreen(),
         '/registerscreen':(context) =>const RegisterScreen(),
-        '/vacancydetailsscreen':(context) =>const VacancyDetailsScreen()
+
       },
       
     );
