@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jobhunt/repository/localauthrepository.dart';
 import 'package:jobhunt/views/favouritescreen.dart';
 import 'package:jobhunt/views/homescreen.dart';
 import 'package:jobhunt/views/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  ConsumerState<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends ConsumerState<MainScreen> {
   int selectedIndex=0;
   void _onItemTap(int index){
     setState(() {
@@ -25,8 +27,15 @@ class _MainScreenState extends State<MainScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-  
+      appBar: AppBar(elevation: 0,
+      backgroundColor: Colors.white,
+      actions: [
+         GestureDetector(onTap: (){
+          ref.read(localAuthRepositoryProvider).logOut(context);
+         },child:const Text("LogOut",style: TextStyle(color: Colors.black,fontSize: 15),))
+      ],),
       bottomNavigationBar:  BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: selectedIndex,
