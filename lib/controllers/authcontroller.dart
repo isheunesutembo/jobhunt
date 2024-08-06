@@ -1,16 +1,25 @@
 
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:jobhunt/models/usermodel.dart';
+import 'package:jobhunt/providers/currentusernotifier.dart';
+import 'package:jobhunt/providers/httpprovider.dart';
 import 'package:jobhunt/repository/authrepository.dart';
-final authControllerProvider=AsyncNotifierProvider<AuthContoller,AsyncValue<UserModel>>(AuthContoller.new);
-class AuthContoller extends AsyncNotifier<AsyncValue<UserModel>>{
+import 'package:jobhunt/repository/localauthrepository.dart';
+final authControllerProvider=AsyncNotifierProvider<AuthContoller,UserModel>(AuthContoller.new);
+class AuthContoller extends AsyncNotifier<UserModel>{
  late AuthRepository _authRepository;
+ late LocalAuthRepository _localAuthRepository;
+ late CurrentUserNotifier _currentUserNotifier;
 @override
- AsyncValue<UserModel> build(){
+ UserModel build(){
   _authRepository=ref.watch(authRepositoryProvider);
+  _localAuthRepository=ref.watch(localAuthRepositoryProvider);
+  _currentUserNotifier=ref.watch(currentUserNotifierProvider.notifier);
   return null!;
  }
 
@@ -104,6 +113,25 @@ class AuthContoller extends AsyncNotifier<AsyncValue<UserModel>>{
       ),
   };
 
+ }
+
+ Future<UserModel?>getCurrentUserData()async{
+  state= const AsyncValue.loading();
+  final userId=_localAuthRepository.readUserId();
+  if(userId!= null){
+    final res=await _authRepository.getCurrentUserData(userId.toString());
+    final val=switch(res){
+      Left(value:final l)=>state=AsyncValue.error(l.message, StackTrace.current),
+      Right(value:final r)=>_getDataSuccess(r)
+    };
+    return val.value;
+  }
+  return null;
+ }
+
+ AsyncValue<UserModel>_getDataSuccess(UserModel user){
+  _currentUserNotifier.addUser(user);
+  return state=AsyncValue.data(user);
  }
 
 }

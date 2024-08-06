@@ -4,16 +4,18 @@ import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobhunt/configs/config.dart';
 import 'package:jobhunt/models/jobcategory.dart';
+import 'package:jobhunt/providers/httpprovider.dart';
 import 'package:jobhunt/util/failure.dart';
-final categoryRepositoryProvider=Provider((ref) => CategoryRepository());
+final categoryRepositoryProvider=Provider((ref) => CategoryRepository(client: ref.watch(httpProvider)));
 class CategoryRepository {
-  static var client = http.Client();
+  final http.Client _client;
+  CategoryRepository({required http.Client client}):_client=client;
   Future< Either<AppFailure,List<JobCategory>>> getJobCategories() async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
     };
     var url = Uri.http(AppConfig.baseUrl, AppConfig.jobCategoriesUrl);
-    var response = await client.get(url, headers: requestHeaders);
+    var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
     try {
       if (response.statusCode == 200) {

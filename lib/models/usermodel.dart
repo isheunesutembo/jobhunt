@@ -3,7 +3,6 @@ part 'usermodel.freezed.dart';
 part 'usermodel.g.dart';
 
 @freezed
-
 abstract class UserModel with _$UserModel{
   @JsonKey(name:"_id")
   factory UserModel({
