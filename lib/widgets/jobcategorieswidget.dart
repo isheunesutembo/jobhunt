@@ -20,8 +20,8 @@ class JobCategoriesWidget extends ConsumerWidget {
       child: ListView.builder(scrollDirection: Axis.vertical,itemCount:data.length ,itemBuilder: (context,index){
         var categories=data[index];
         return Column(children: [
-          CircleAvatar(backgroundImage: NetworkImage(categories.fullImagePath),
-          radius: 50,),
+          Image.network(categories.image!.toString()),
+         
           Text(categories.title!,style:const  TextStyle(fontSize: 18,fontWeight: FontWeight.w500 ),)
 
         ],);

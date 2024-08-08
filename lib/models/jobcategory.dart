@@ -15,6 +15,4 @@ abstract class JobCategory with _$JobCategory{
   })=_JobCategory;
     factory JobCategory.fromJson(Map<String,dynamic>json)=> _$JobCategoryFromJson(json);
 }
-extension JobCategoryExt on JobCategory{
-  String get fullImagePath=>AppConfig.fullImageUrl+image!;
-}
+

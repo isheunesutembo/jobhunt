@@ -8,5 +8,6 @@ class AppConfig{
   static const jobCategoriesUrl="/api/categories";
   static const vacanciesUrl="/api/vacancies";
   static const companiesUrl="/api/companies";
+  static const resumeUrl='/api/resumes';
   
 }
