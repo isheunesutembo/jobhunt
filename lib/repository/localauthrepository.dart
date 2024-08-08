@@ -29,7 +29,7 @@ class LocalAuthRepository{
  Future<void>logOut(BuildContext context)async{
     await _flutterSecureStorage.delete(key: "userToken");
     
-    Navigator.pushNamed(context, "/login");
+    Navigator.pushNamed(context, "/signinscreen");
 
   }
 }

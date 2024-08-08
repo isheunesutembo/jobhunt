@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jobhunt/controllers/authcontroller.dart';
-import 'package:jobhunt/providers/currentusernotifier.dart';
-import 'package:jobhunt/providers/httpprovider.dart';
-import 'package:jobhunt/views/homescreen.dart';
+import 'package:jobhunt/repository/localauthrepository.dart';
+import 'package:jobhunt/views/favouritescreen.dart';
 import 'package:jobhunt/views/log_in_screen.dart';
 import 'package:jobhunt/views/main_screen.dart';
+import 'package:jobhunt/views/profile_screen.dart';
+import 'package:jobhunt/views/register_screen.dart';
 
-Widget _defaultHome=SignInScreen();
+
+Widget _defaultHome=const SignInScreen();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  final container=ProviderContainer();
+  final result=await container.read(localAuthRepositoryProvider).isLoggedIn();
+  if(result!=null){
+    _defaultHome=const MainScreen();
+  }
   
-  
-  runApp( const ProviderScope(child:  MyApp()));
+  runApp(UncontrolledProviderScope(container:container,child: const MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -20,9 +25,16 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    
-    return const MaterialApp(
-      home: MainScreen()
+    return  MaterialApp(
+      routes: {
+        '/':(context)=>_defaultHome,
+        '/mainscreen':(context)=>const MainScreen(),
+        '/signinscreen':(context)=>const SignInScreen(),
+        '/registerscreen':(context)=>const RegisterScreen(),
+        '/profilescreen':(context)=>const ProfileScreen(),
+        '/favoritescreen':(context)=>const FavouriteScreen()
+
+      },
       
     );
   }
