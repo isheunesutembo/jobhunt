@@ -27,7 +27,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context,WidgetRef ref) {
     return  MaterialApp(
       routes: {
-        '/':(context)=>_defaultHome,
+        '/':(context)=>const MainScreen(),
         '/mainscreen':(context)=>const MainScreen(),
         '/signinscreen':(context)=>const SignInScreen(),
         '/registerscreen':(context)=>const RegisterScreen(),

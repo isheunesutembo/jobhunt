@@ -103,8 +103,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () async{
-                             ref.read(authControllerProvider.notifier)
-                             .logInWithEmailPassword(_email, _password, context);
+                           ref.read(authControllerProvider.notifier)
+                             .logInWithEmailPassword(_email, _password, context).then((success){
+                               Navigator.pushNamed(context, "/mainscreen");
+                             });
                            
                            
                           },

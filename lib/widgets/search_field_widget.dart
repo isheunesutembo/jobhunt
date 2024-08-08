@@ -7,7 +7,7 @@ class SearchFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
-      width: 360,
+      width: 350,
       child: Card(
         elevation: 5,
         child: TextField(
