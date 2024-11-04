@@ -4,6 +4,7 @@ part 'usermodel.g.dart';
 
 @freezed
 abstract class UserModel with _$UserModel{
+  @JsonSerializable(explicitToJson: true,anyMap: true)
   @JsonKey(name:"_id")
   factory UserModel({
   String? id,

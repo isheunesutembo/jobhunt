@@ -6,7 +6,7 @@ part of 'resume.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ResumeImpl _$$ResumeImplFromJson(Map<String, dynamic> json) => _$ResumeImpl(
+_$ResumeImpl _$$ResumeImplFromJson(Map json) => _$ResumeImpl(
       userId: json['userId'] as String?,
       resume: json['resume'] as String?,
     );

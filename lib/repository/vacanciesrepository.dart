@@ -15,10 +15,12 @@ class VacanciesRepository{
   Future<Either<AppFailure,List<Vacancy>>>getJobVacancies()async{
      Map<String, String> requestHeaders = {
       "Accept": "application/json",
+      "Content-Type":"application/json"
     };
     var url = Uri.http(AppConfig.baseUrl, AppConfig.vacanciesUrl);
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
+ 
     try {
       if (response.statusCode == 200) {
         return Right(vacanciesFromJson(data));
@@ -33,14 +35,16 @@ class VacanciesRepository{
 
   Future<Either<AppFailure,Vacancy>>getVacancyById(String id)async{
       Map<String, String> requestHeaders = {
-      "Accept": "application/json",
+    
+      "Content-Type":"application/json"
     };
     var url = Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}/$id");
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
+    Map<String,dynamic>jsonData=json.decode(response.body);
     try {
       if (response.statusCode == 200) {
-        return Right(Vacancy.fromJson(data));
+        return Right(Vacancy.fromJson(jsonData));
       } else {
         return Left(AppFailure(message: data['message']));
       }

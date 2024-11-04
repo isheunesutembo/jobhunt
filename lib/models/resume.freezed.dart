@@ -23,8 +23,12 @@ mixin _$Resume {
   String? get userId => throw _privateConstructorUsedError;
   String? get resume => throw _privateConstructorUsedError;
 
+  /// Serializes this Resume to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Resume
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResumeCopyWith<Resume> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$ResumeCopyWithImpl<$Res, $Val extends Resume>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Resume
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$ResumeImplCopyWithImpl<$Res>
       _$ResumeImpl _value, $Res Function(_$ResumeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Resume
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,7 +111,8 @@ class __$$ResumeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true, anyMap: true)
 class _$ResumeImpl implements _Resume {
   _$ResumeImpl({this.userId, this.resume});
 
@@ -129,11 +138,13 @@ class _$ResumeImpl implements _Resume {
             (identical(other.resume, resume) || other.resume == resume));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, resume);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Resume
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResumeImplCopyWith<_$ResumeImpl> get copyWith =>
@@ -156,8 +167,11 @@ abstract class _Resume implements Resume {
   String? get userId;
   @override
   String? get resume;
+
+  /// Create a copy of Resume
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResumeImplCopyWith<_$ResumeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

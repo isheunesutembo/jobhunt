@@ -6,8 +6,7 @@ part of 'vacancy.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VacancyImpl _$$VacancyImplFromJson(Map<String, dynamic> json) =>
-    _$VacancyImpl(
+_$VacancyImpl _$$VacancyImplFromJson(Map json) => _$VacancyImpl(
       title: json['title'] as String?,
       description: json['description'] as String?,
       requirements: json['requirements'] as String?,
@@ -17,7 +16,13 @@ _$VacancyImpl _$$VacancyImplFromJson(Map<String, dynamic> json) =>
       experience: json['experience'] as String?,
       salary: json['salary'] as String?,
       benefits: json['benefits'] as String?,
-      company: json['company'] as String?,
+      category: json['category'] == null
+          ? null
+          : Category.fromJson(
+              Map<String, dynamic>.from(json['category'] as Map)),
+      company: json['company'] == null
+          ? null
+          : Company.fromJson(Map<String, dynamic>.from(json['company'] as Map)),
       vacancyId: json['vacancyId'] as String?,
     );
 
@@ -30,6 +35,7 @@ Map<String, dynamic> _$$VacancyImplToJson(_$VacancyImpl instance) =>
       'experience': instance.experience,
       'salary': instance.salary,
       'benefits': instance.benefits,
-      'company': instance.company,
+      'category': instance.category?.toJson(),
+      'company': instance.company?.toJson(),
       'vacancyId': instance.vacancyId,
     };

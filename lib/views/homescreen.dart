@@ -15,10 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return  const Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(children: [
-           // JobCategoriesWidget(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start
+            ,children: [
+           JobCategoriesWidget(),
             Padding(
               padding: EdgeInsets.all(8.0),
               child: Row(

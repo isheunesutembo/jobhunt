@@ -22,6 +22,7 @@ class AuthRepository {
       String email, String password) async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
+      "Content-Type":"application/json"
     };
     var url = Uri.http(AppConfig.baseUrl, AppConfig.logInUrl);
     var response = await _client.post(url,
@@ -54,7 +55,7 @@ class AuthRepository {
     var data = jsonDecode(response.body);
     try {
   
-      if (response.statusCode == 200 || response == 201) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(UserModel.fromJson(data));
       } else {
         return Left(AppFailure(message: data['message']));

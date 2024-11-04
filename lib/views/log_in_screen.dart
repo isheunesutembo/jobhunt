@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/controllers/authcontroller.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
+
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});
@@ -13,6 +13,7 @@ class SignInScreen extends ConsumerStatefulWidget {
 class _SignInScreenState extends ConsumerState<SignInScreen> {
   String _email="";
   String _password="";
+
    bool isAsyncCallProcess = false;
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool validateAndSave(){
@@ -28,13 +29,14 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(elevation: 0,backgroundColor: Colors.white,),
+      appBar: AppBar(elevation: 0,backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
       child: Column(mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,children: [
         const SizedBox(height: 120,),
         Form(key: _formKey,child: Column(children: [
-           Padding(
+          Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         enableSuggestions: true,
@@ -63,6 +65,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        
                         enableSuggestions: true,
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
@@ -104,9 +107,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                         child: ElevatedButton(
                           onPressed: () async{
                            ref.read(authControllerProvider.notifier)
-                             .logInWithEmailPassword(_email, _password, context).then((success){
-                               Navigator.pushNamed(context, "/mainscreen");
-                             });
+                             .logInWithEmailPassword(_email, _password, context);
                            
                            
                           },

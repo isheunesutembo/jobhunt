@@ -5,14 +5,14 @@ import 'package:fpdart/fpdart.dart';
 import 'package:jobhunt/models/resume.dart';
 import 'package:jobhunt/repository/resumerepository.dart';
 import 'package:jobhunt/util/utils.dart';
-final resumeControllerProvider=AsyncNotifierProvider<ResumeController,AsyncValue<Resume>>(ResumeController.new);
-class ResumeController extends AsyncNotifier <AsyncValue<Resume>>{
+final resumeControllerProvider=AsyncNotifierProvider<ResumeController,AsyncValue<void>>(ResumeController.new);
+class ResumeController extends AsyncNotifier <AsyncValue<void>>{
   late ResumeRepository _resumeRepository;
   
   @override
-  AsyncValue<Resume> build(){
+  AsyncValue<void> build(){
      _resumeRepository=ref.watch(resumeRepositoryProvider);
-    return null!;
+    return const AsyncValue.data(null);
   }
   
   Future<void>uploadResume(File resume ,String userId,BuildContext context)async{

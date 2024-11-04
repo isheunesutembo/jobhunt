@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jobhunt/repository/localauthrepository.dart';
+import 'package:jobhunt/views/chat_screen.dart';
 import 'package:jobhunt/views/favouritescreen.dart';
 import 'package:jobhunt/views/homescreen.dart';
 import 'package:jobhunt/views/profile_screen.dart';
+import 'package:jobhunt/views/settings_screen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
@@ -22,20 +23,15 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   List<Widget>pages=[
     const HomeScreen(),
+    const ChatScreen(),
     const FavouriteScreen(),
-    const ProfileScreen()
+    const SettingsScreen()
   ];
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(elevation: 0,
-      backgroundColor: Colors.white,
-      actions: [
-         GestureDetector(onTap: (){
-          ref.read(localAuthRepositoryProvider).logOut(context);
-         },child:const Text("LogOut",style: TextStyle(color: Colors.black,fontSize: 15),))
-      ],),
+     
       bottomNavigationBar:  BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: selectedIndex,
@@ -49,6 +45,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                   size: 30,
                 ),
                 label: "Home"),
+                  BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.chat,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                label: "Chat"),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.favorite,
@@ -58,11 +61,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                 label: "Favourites"),
                  BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.person,
+                  Icons.settings,
                   color: Colors.black,
                   size: 30,
                 ),
-                label: "Profile"),
+                label: "Settings"),
            
          
           ],

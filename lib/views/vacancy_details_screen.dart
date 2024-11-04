@@ -22,7 +22,7 @@ class VacancyDetailsScreen extends ConsumerWidget {
           child: Icon(Icons.share),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Icon(Icons.favorite),
         )
       ],),
@@ -50,7 +50,7 @@ class VacancyDetailsScreen extends ConsumerWidget {
        padding: const EdgeInsets.all(8.0),
        child: Text(data.description.toString(),style:const TextStyle(fontSize: 18,color: Colors.grey,fontWeight: FontWeight.w500),),
      ),
-    VacancyTagsList(vacancy: data)
+  VacancyTagsList(vacancy: data)
 
     ],),)),
      );

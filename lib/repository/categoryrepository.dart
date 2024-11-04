@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobhunt/configs/config.dart';
-import 'package:jobhunt/models/jobcategory.dart';
+import 'package:jobhunt/models/category.dart';
 import 'package:jobhunt/providers/httpprovider.dart';
 import 'package:jobhunt/util/failure.dart';
 final categoryRepositoryProvider=Provider((ref) => CategoryRepository(client: ref.watch(httpProvider)));
 class CategoryRepository {
   final http.Client _client;
   CategoryRepository({required http.Client client}):_client=client;
-  Future< Either<AppFailure,List<JobCategory>>> getJobCategories() async {
+  Future< Either<AppFailure,List<Category>>> getJobCategories() async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
     };

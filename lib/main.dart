@@ -26,8 +26,9 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     return  MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {
-        '/':(context)=>const MainScreen(),
+        '/':(context)=> _defaultHome,
         '/mainscreen':(context)=>const MainScreen(),
         '/signinscreen':(context)=>const SignInScreen(),
         '/registerscreen':(context)=>const RegisterScreen(),

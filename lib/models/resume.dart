@@ -6,6 +6,7 @@ List<Resume> resumeFromJson(dynamic str) =>
    List<Resume>.from((str).map((e) => Resume.fromJson(e)));
 @freezed
 abstract class Resume with _$Resume{
+@JsonSerializable(explicitToJson: true,anyMap: true)
 factory Resume
 ({
     String? userId,

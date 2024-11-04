@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'jobcategory.dart';
+part of 'category.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,41 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-JobCategory _$JobCategoryFromJson(Map<String, dynamic> json) {
-  return _JobCategory.fromJson(json);
+Category _$CategoryFromJson(Map<String, dynamic> json) {
+  return _Category.fromJson(json);
 }
 
 /// @nodoc
-mixin _$JobCategory {
+mixin _$Category {
   String? get title => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get categoryId => throw _privateConstructorUsedError;
 
+  /// Serializes this Category to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $JobCategoryCopyWith<JobCategory> get copyWith =>
+
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $JobCategoryCopyWith<$Res> {
-  factory $JobCategoryCopyWith(
-          JobCategory value, $Res Function(JobCategory) then) =
-      _$JobCategoryCopyWithImpl<$Res, JobCategory>;
+abstract class $CategoryCopyWith<$Res> {
+  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
+      _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
   $Res call({String? title, String? image, String? categoryId});
 }
 
 /// @nodoc
-class _$JobCategoryCopyWithImpl<$Res, $Val extends JobCategory>
-    implements $JobCategoryCopyWith<$Res> {
-  _$JobCategoryCopyWithImpl(this._value, this._then);
+class _$CategoryCopyWithImpl<$Res, $Val extends Category>
+    implements $CategoryCopyWith<$Res> {
+  _$CategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,24 +79,26 @@ class _$JobCategoryCopyWithImpl<$Res, $Val extends JobCategory>
 }
 
 /// @nodoc
-abstract class _$$JobCategoryImplCopyWith<$Res>
-    implements $JobCategoryCopyWith<$Res> {
-  factory _$$JobCategoryImplCopyWith(
-          _$JobCategoryImpl value, $Res Function(_$JobCategoryImpl) then) =
-      __$$JobCategoryImplCopyWithImpl<$Res>;
+abstract class _$$CategoryImplCopyWith<$Res>
+    implements $CategoryCopyWith<$Res> {
+  factory _$$CategoryImplCopyWith(
+          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
+      __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? title, String? image, String? categoryId});
 }
 
 /// @nodoc
-class __$$JobCategoryImplCopyWithImpl<$Res>
-    extends _$JobCategoryCopyWithImpl<$Res, _$JobCategoryImpl>
-    implements _$$JobCategoryImplCopyWith<$Res> {
-  __$$JobCategoryImplCopyWithImpl(
-      _$JobCategoryImpl _value, $Res Function(_$JobCategoryImpl) _then)
+class __$$CategoryImplCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
+    implements _$$CategoryImplCopyWith<$Res> {
+  __$$CategoryImplCopyWithImpl(
+      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,7 +106,7 @@ class __$$JobCategoryImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? categoryId = freezed,
   }) {
-    return _then(_$JobCategoryImpl(
+    return _then(_$CategoryImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -117,12 +124,13 @@ class __$$JobCategoryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$JobCategoryImpl implements _JobCategory {
-  _$JobCategoryImpl({this.title, this.image, this.categoryId});
 
-  factory _$JobCategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$JobCategoryImplFromJson(json);
+@JsonSerializable(explicitToJson: true, anyMap: true)
+class _$CategoryImpl implements _Category {
+  _$CategoryImpl({this.title, this.image, this.categoryId});
+
+  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryImplFromJson(json);
 
   @override
   final String? title;
@@ -133,46 +141,48 @@ class _$JobCategoryImpl implements _JobCategory {
 
   @override
   String toString() {
-    return 'JobCategory(title: $title, image: $image, categoryId: $categoryId)';
+    return 'Category(title: $title, image: $image, categoryId: $categoryId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JobCategoryImpl &&
+            other is _$CategoryImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, image, categoryId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$JobCategoryImplCopyWith<_$JobCategoryImpl> get copyWith =>
-      __$$JobCategoryImplCopyWithImpl<_$JobCategoryImpl>(this, _$identity);
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$JobCategoryImplToJson(
+    return _$$CategoryImplToJson(
       this,
     );
   }
 }
 
-abstract class _JobCategory implements JobCategory {
-  factory _JobCategory(
+abstract class _Category implements Category {
+  factory _Category(
       {final String? title,
       final String? image,
-      final String? categoryId}) = _$JobCategoryImpl;
+      final String? categoryId}) = _$CategoryImpl;
 
-  factory _JobCategory.fromJson(Map<String, dynamic> json) =
-      _$JobCategoryImpl.fromJson;
+  factory _Category.fromJson(Map<String, dynamic> json) =
+      _$CategoryImpl.fromJson;
 
   @override
   String? get title;
@@ -180,8 +190,11 @@ abstract class _JobCategory implements JobCategory {
   String? get image;
   @override
   String? get categoryId;
+
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$JobCategoryImplCopyWith<_$JobCategoryImpl> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

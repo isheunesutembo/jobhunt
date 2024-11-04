@@ -22,12 +22,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return true;
     }else{
       return false;
-    }
+    } 
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0,backgroundColor: Colors.white,),
+      appBar: AppBar(elevation: 0,backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
       child: Column(mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,children: [

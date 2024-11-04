@@ -1,19 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'jobcategory.dart';
+part of 'category.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$JobCategoryImpl _$$JobCategoryImplFromJson(Map<String, dynamic> json) =>
-    _$JobCategoryImpl(
+_$CategoryImpl _$$CategoryImplFromJson(Map json) => _$CategoryImpl(
       title: json['title'] as String?,
       image: json['image'] as String?,
       categoryId: json['categoryId'] as String?,
     );
 
-Map<String, dynamic> _$$JobCategoryImplToJson(_$JobCategoryImpl instance) =>
+Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'image': instance.image,

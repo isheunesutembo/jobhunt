@@ -1,22 +1,22 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:jobhunt/models/jobcategory.dart';
+import 'package:jobhunt/models/category.dart';
 import 'package:jobhunt/repository/categoryrepository.dart';
-final jobCategoriesControllerProvider=AsyncNotifierProvider<JobCategoryController,AsyncValue<List<JobCategory>>>(JobCategoryController.new);
+final jobCategoriesControllerProvider=AsyncNotifierProvider<JobCategoryController,AsyncValue<void>>(JobCategoryController.new);
 
-final getJobCategoriesProvider=AutoDisposeFutureProvider<List<JobCategory>>((ref) {
+final getJobCategoriesProvider=AutoDisposeFutureProvider<List<Category>>((ref) {
   final jobCategoryController=ref.watch(jobCategoriesControllerProvider.notifier);
 
   return jobCategoryController.getJobCategories();
 });
-class JobCategoryController extends AsyncNotifier<AsyncValue<List<JobCategory>>>{
+class JobCategoryController extends AsyncNotifier<AsyncValue<void>>{
   late CategoryRepository _categoryRepository;
-  AsyncValue<List<JobCategory>>build(){
+  AsyncValue<void>build(){
     _categoryRepository=ref.watch(categoryRepositoryProvider);
-  return null!;
+  return const AsyncValue.data(null);
   }
-  Future<List<JobCategory>>getJobCategories()async{
+  Future<List<Category>>getJobCategories()async{
    final res= await _categoryRepository.getJobCategories();
 
    return switch(res){
