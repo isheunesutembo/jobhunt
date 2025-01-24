@@ -1,0 +1,23 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jobhunt/configs/config.dart';
+import 'package:jobhunt/features/vacancy/models/company.dart';
+part 'application_model.freezed.dart';
+part 'application_model.g.dart';
+
+List<ApplicationModel> applicationFromJson(dynamic str) =>
+    List<ApplicationModel>.from((str).map((e) => ApplicationModel.fromJson(e)));
+
+@freezed
+abstract class ApplicationModel with _$ApplicationModel {
+  @JsonSerializable(explicitToJson: true, anyMap: true)
+  factory ApplicationModel({
+    @JsonKey(name: "_id") String? id,
+    String? status,
+    String? vacancyId,
+    Company? company,
+    String? userId,
+    String? resume,
+  }) = _ApplicationModel;
+  factory ApplicationModel.fromJson(Map<String, dynamic> json) =>
+      _$ApplicationModelFromJson(json);
+}
