@@ -19,16 +19,17 @@ class FavouriteScreen extends ConsumerWidget {
           style: TextStyle(color: Colors.black, fontSize: 20),
         )),
       ),
-      body:  RefreshIndicator(
-        onRefresh: () => ref.refresh(getFavourites(userId!).future),
-        child: const SafeArea(
-            child: SingleChildScrollView(
-                    child: Column(
-            children: [
-              FavouritesList()
-            ],
-                    ),
-                  )),
+      body:  SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () => ref.refresh(getFavourites(userId.toString()).future),
+          child: const SingleChildScrollView(
+                  child: Column(
+          children: [
+            FavouritesList()
+          ],
+                  ),
+                ),
+        ),
       ),
     );
   }

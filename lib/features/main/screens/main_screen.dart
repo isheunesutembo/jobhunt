@@ -36,32 +36,33 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           backgroundColor: Colors.white,
           currentIndex: selectedIndex,
           selectedItemColor: Colors.orange,
+          unselectedItemColor: Colors.black,
           onTap: _onItemTap,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.home_outlined,
                   color: Colors.black,
                   size: 30,
                 ),
-                label: "Home"),
+                label: "Jobs"),
                   BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.chat,
+                  Icons.mail_outline,
                   color: Colors.black,
                   size: 30,
                 ),
-                label: "Chat"),
+                label: "Applications"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.favorite,
+                  Icons.favorite_outline,
                   color: Colors.black,
                   size: 30,
                 ),
                 label: "Favourites"),
                  BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.settings,
+                  Icons.settings_outlined,
                   color: Colors.black,
                   size: 30,
                 ),

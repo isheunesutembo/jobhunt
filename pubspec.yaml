@@ -50,6 +50,7 @@ dependencies:
   shared_preferences: ^2.3.2
   document_viewer: ^0.0.2-4
   flutter_cached_pdfview: ^0.4.3
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:

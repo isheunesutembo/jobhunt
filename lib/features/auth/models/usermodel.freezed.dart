@@ -29,6 +29,7 @@ mixin _$UserModel {
   String? get userType => throw _privateConstructorUsedError;
   String? get userToken => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +54,8 @@ abstract class $UserModelCopyWith<$Res> {
       String? phone,
       String? userType,
       String? userToken,
-      String? profileImage});
+      String? profileImage,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -79,6 +81,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? userType = freezed,
     Object? userToken = freezed,
     Object? profileImage = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -113,6 +116,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -133,7 +140,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? phone,
       String? userType,
       String? userToken,
-      String? profileImage});
+      String? profileImage,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -157,6 +165,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? userType = freezed,
     Object? userToken = freezed,
     Object? profileImage = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: freezed == id
@@ -191,6 +200,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -207,7 +220,8 @@ class _$UserModelImpl implements _UserModel {
       this.phone,
       this.userType,
       this.userToken,
-      this.profileImage});
+      this.profileImage,
+      this.refreshToken});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -229,10 +243,12 @@ class _$UserModelImpl implements _UserModel {
   final String? userToken;
   @override
   final String? profileImage;
+  @override
+  final String? refreshToken;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, email: $email, verification: $verification, phone: $phone, userType: $userType, userToken: $userToken, profileImage: $profileImage)';
+    return 'UserModel(id: $id, username: $username, email: $email, verification: $verification, phone: $phone, userType: $userType, userToken: $userToken, profileImage: $profileImage, refreshToken: $refreshToken)';
   }
 
   @override
@@ -252,13 +268,15 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.userToken, userToken) ||
                 other.userToken == userToken) &&
             (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage));
+                other.profileImage == profileImage) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, username, email,
-      verification, phone, userType, userToken, profileImage);
+      verification, phone, userType, userToken, profileImage, refreshToken);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -285,7 +303,8 @@ abstract class _UserModel implements UserModel {
       final String? phone,
       final String? userType,
       final String? userToken,
-      final String? profileImage}) = _$UserModelImpl;
+      final String? profileImage,
+      final String? refreshToken}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -307,6 +326,8 @@ abstract class _UserModel implements UserModel {
   String? get userToken;
   @override
   String? get profileImage;
+  @override
+  String? get refreshToken;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

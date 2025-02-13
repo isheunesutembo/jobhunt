@@ -16,7 +16,7 @@ class VacanciesByCategoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
         final category = ModalRoute.of(context)!.settings.arguments as Category;
-    final vacancies = ref.watch(getVacancyBycategoryProvider(category.categoryId!));
+    final vacancies = ref.watch(getVacancyBycategoryProvider(category.categoryId.toString()));
     return vacancies.when(
         data: (data) {
           return data.isNotEmpty?ListView.builder(
@@ -36,7 +36,7 @@ class VacanciesByCategoryScreen extends ConsumerWidget {
                     child: VacancyItemWidget(
                       vacancy: data[index],
                     ));
-              }):Center(child: Text("No vacancies"),);
+              }):const Center(child: Text("No vacancies"),);
         },
         error: (error, stackTrace) => ErrorText(error: error.toString()),
         loading: () => const Loader());

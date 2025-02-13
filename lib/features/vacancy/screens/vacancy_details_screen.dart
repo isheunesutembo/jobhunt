@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/resume/controllers/resumecontroller.dart';
-import 'package:jobhunt/features/vacancy/controllers/vacancycontroller.dart';
-
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/util/errortext.dart';
 import 'package:jobhunt/util/loader.dart';
 import 'package:jobhunt/features/vacancyapplication/screens/send_application_screen.dart';
 import 'package:jobhunt/features/vacancyapplication/widgets/company_profile_widget.dart';
 import 'package:jobhunt/features/resume/widgets/resume_widget.dart';
-import 'package:jobhunt/features/vacancy/widgets/vacancy_tags.dart';
 import 'package:jobhunt/features/vacancy/widgets/vacancy_tags_list.dart';
 
 import '../models/vacancy.dart';
@@ -21,7 +18,8 @@ class VacancyDetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final vacancy = ModalRoute.of(context)!.settings.arguments as Vacancy;
      final userId = ref.watch(localAuthRepositoryProvider).getUserId();
-        final resume = ref.watch(getResumesProvider(userId!));
+        final resume = ref.watch(getResumesProvider(userId.toString()));
+      
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -113,7 +111,7 @@ class VacancyDetailsScreen extends ConsumerWidget {
                               itemCount: data.length,
                               itemBuilder: (context, index) {
                                 final  resume=data[index];
-                                return data.isNotEmpty ||data !=null? GestureDetector(onTap: (){
+                                return data.isNotEmpty || data.first.resume !=null ? GestureDetector(onTap: (){
                                   Navigator.push(context,MaterialPageRoute(builder: (context)=> SendApplicationScreen(vacancy:vacancy ,resume: resume,)));
                                 },child: ResumeWidget(resume: data[index])):Column(children: [
                                   const Text("You have no resume ",

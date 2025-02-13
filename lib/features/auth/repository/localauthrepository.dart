@@ -16,6 +16,11 @@ class LocalAuthRepository {
       _sharedPreferences.setString("userToken", token);
     }
   }
+   void setRefreshToken(String? token){
+    if(token !=null){
+      _sharedPreferences.setString("refreshToken", token);
+    }
+  }
   void setUserId(String? userId){
     if(userId !=null){
       _sharedPreferences.setString("userId", userId);
@@ -23,6 +28,9 @@ class LocalAuthRepository {
   }
   String? getUserToken(){
     return _sharedPreferences.getString("userToken");
+  }
+    String? getRefreshToken(){
+    return _sharedPreferences.getString("refreshToken");
   }
 
  String? getUserId(){
@@ -35,5 +43,10 @@ class LocalAuthRepository {
     _sharedPreferences.clear();
 
     Navigator.pushNamed(context, "/signinscreen");
+  }
+  Future<void> clearTokens() async {
+   _sharedPreferences.remove("userToken");
+   _sharedPreferences.remove("refreshToken");
+      _sharedPreferences.remove("userId");
   }
 }

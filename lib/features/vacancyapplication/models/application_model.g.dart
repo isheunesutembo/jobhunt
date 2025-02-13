@@ -9,11 +9,9 @@ part of 'application_model.dart';
 _$ApplicationModelImpl _$$ApplicationModelImplFromJson(Map json) =>
     _$ApplicationModelImpl(
       id: json['_id'] as String?,
-      status: json['status'] as String?,
+      status: json['status'] as bool?,
       vacancyId: json['vacancyId'] as String?,
-      company: json['company'] == null
-          ? null
-          : Company.fromJson(Map<String, dynamic>.from(json['company'] as Map)),
+      company: json['company'] as String?,
       userId: json['userId'] as String?,
       resume: json['resume'] as String?,
     );
@@ -24,7 +22,7 @@ Map<String, dynamic> _$$ApplicationModelImplToJson(
       '_id': instance.id,
       'status': instance.status,
       'vacancyId': instance.vacancyId,
-      'company': instance.company?.toJson(),
+      'company': instance.company,
       'userId': instance.userId,
       'resume': instance.resume,
     };

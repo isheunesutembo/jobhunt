@@ -55,7 +55,7 @@ class _SendApplicationScreenState extends ConsumerState<SendApplicationScreen> {
                         application.sendApplication(
                             widget.vacancy.vacancyId.toString(),
                             widget.resume.id.toString(),
-                            widget.vacancy.company!.id.toString(),
+                            widget.vacancy.company!.companyId.toString(),
                             userId!,
                             context);
                       },

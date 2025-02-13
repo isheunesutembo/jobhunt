@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:jobhunt/configs/config.dart';
 import 'package:jobhunt/features/auth/models/usermodel.dart';
-
 import 'package:jobhunt/providers/httpprovider.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/util/failure.dart';
@@ -34,6 +33,7 @@ class AuthRepository {
       if (response.statusCode == 200 || response.statusCode == 201) {
         _localAuthRepository.setUserId(data['_id']);
         _localAuthRepository.setToken(data["userToken"]);
+         _localAuthRepository.setRefreshToken(data["refreshToken"]);
         return Right(UserModel.fromJson(data));
       } else {
         return Left(AppFailure(message: data['message']));
@@ -78,12 +78,40 @@ class AuthRepository {
     var data = jsonDecode(response.body);
     try {
       if (response.statusCode == 200) {
-        return Right(data);
-      } else {
+        return Right(UserModel.fromJson(data));
+      } else if(response.statusCode==403){
+      await  refreshToken();
+       return await getCurrentUserData(userId);
+      } {
         return Left(AppFailure(message: data['message']));
       }
     } catch (e) {
       return Left(AppFailure(message: data["message"]));
+    }
+  }
+
+  Future<String?>refreshToken()async{
+    final refreshToken=_localAuthRepository.getRefreshToken();
+    if(refreshToken==null){
+      return null;
+    }
+    var url = Uri.http(AppConfig.baseUrl, AppConfig.refreshTokenUrl);
+    final response=await http.post(
+      url,
+      headers: {
+        'Content-Type':"application/json"
+      },body: jsonEncode({
+        "refreshToken":refreshToken
+      })
+    );
+    if(response.statusCode==200){
+      final data=jsonDecode(response.body);
+      final newUserToken=data["userToken"];
+      _localAuthRepository.setToken(newUserToken);
+      return newUserToken;
+    }else{
+      _localAuthRepository.clearTokens();
+      return null;
     }
   }
 }

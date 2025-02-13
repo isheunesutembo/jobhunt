@@ -6,6 +6,7 @@ class AppConfig{
   static const fullResumeUrl="http://127.0.0.1:6013/";
   static const registerUrl="/api/registerUser";
   static const logInUrl="/api/logInUser";
+  static const refreshTokenUrl="/api/refresh-token";
   static const usersUrl="/api/users";
   static const jobCategoriesUrl="/api/categories";
   static const vacanciesUrl="/api/vacancies";

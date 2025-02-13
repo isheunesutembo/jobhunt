@@ -2,15 +2,17 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 
-class SendApplicationButton extends StatefulWidget {
+class SendApplicationButton extends ConsumerStatefulWidget {
   const SendApplicationButton({super.key});
 
   @override
-  State<SendApplicationButton> createState() => _SendApplicationButtonState();
+  ConsumerState<SendApplicationButton> createState() => _SendApplicationButtonState();
 }
 
-class _SendApplicationButtonState extends State<SendApplicationButton> {
+class _SendApplicationButtonState extends ConsumerState<SendApplicationButton> {
    File? _selectedFile;
 
   Future<void> _pickFile() async {
@@ -28,6 +30,7 @@ class _SendApplicationButtonState extends State<SendApplicationButton> {
 
   @override
   Widget build(BuildContext context) {
+        final userId = ref.watch(localAuthRepositoryProvider).getUserId();
     return  Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
@@ -66,6 +69,7 @@ class _SendApplicationButtonState extends State<SendApplicationButton> {
                     _selectedFile!=null?
                     Center(
                         child: ElevatedButton(onPressed:(){
+                          
                           
                      
                         }, child:const Text("Send Application")),

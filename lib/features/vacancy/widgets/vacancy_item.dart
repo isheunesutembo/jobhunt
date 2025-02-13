@@ -1,16 +1,11 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/favorite/controller/favouritecontroller.dart';
 import 'package:jobhunt/features/resume/controllers/resumecontroller.dart';
-
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
-import 'package:jobhunt/util/errortext.dart';
-import 'package:jobhunt/util/loader.dart';
-import 'package:jobhunt/features/vacancyapplication/screens/send_application_screen.dart';
-import 'package:jobhunt/features/resume/widgets/resume_widget.dart';
-import 'package:jobhunt/features/vacancyapplication/widgets/send_application_button.dart';
+
 
 import '../models/vacancy.dart';
 
@@ -58,16 +53,7 @@ class VacancyItemWidget extends ConsumerWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    vacancy.experience.toString(),
-                    style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
+          
                 const SizedBox(
                   height: 10,
                 ),

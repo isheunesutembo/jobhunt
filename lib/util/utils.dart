@@ -5,6 +5,7 @@ void showSnackBar(BuildContext context, String text) {
     ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
+        backgroundColor: Colors.deepOrangeAccent,
         content: Text(text),
       ),
     );

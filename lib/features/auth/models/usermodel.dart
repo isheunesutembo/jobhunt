@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jobhunt/configs/config.dart';
 part 'usermodel.freezed.dart';
 part 'usermodel.g.dart';
 
@@ -13,7 +14,12 @@ abstract class UserModel with _$UserModel {
       String? phone,
       String? userType,
       String? userToken,
-      String? profileImage}) = _UserModel;
+      String? profileImage,
+      String? refreshToken}) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 }
+extension UserExt on UserModel{
+  String get fullProfileImagePath=>AppConfig.fullImageUrl+profileImage.toString();
+}
+

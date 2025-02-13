@@ -11,10 +11,11 @@ List<ApplicationModel> applicationFromJson(dynamic str) =>
 abstract class ApplicationModel with _$ApplicationModel {
   @JsonSerializable(explicitToJson: true, anyMap: true)
   factory ApplicationModel({
-    @JsonKey(name: "_id") String? id,
-    String? status,
+    @JsonKey(name: "_id") 
+    String? id,
+    bool? status,
     String? vacancyId,
-    Company? company,
+    String? company,
     String? userId,
     String? resume,
   }) = _ApplicationModel;

@@ -22,9 +22,9 @@ ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) {
 mixin _$ApplicationModel {
   @JsonKey(name: "_id")
   String? get id => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
+  bool? get status => throw _privateConstructorUsedError;
   String? get vacancyId => throw _privateConstructorUsedError;
-  Company? get company => throw _privateConstructorUsedError;
+  String? get company => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get resume => throw _privateConstructorUsedError;
 
@@ -46,13 +46,11 @@ abstract class $ApplicationModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "_id") String? id,
-      String? status,
+      bool? status,
       String? vacancyId,
-      Company? company,
+      String? company,
       String? userId,
       String? resume});
-
-  $CompanyCopyWith<$Res>? get company;
 }
 
 /// @nodoc
@@ -85,7 +83,7 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       vacancyId: freezed == vacancyId
           ? _value.vacancyId
           : vacancyId // ignore: cast_nullable_to_non_nullable
@@ -93,7 +91,7 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
       company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
-              as Company?,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -103,20 +101,6 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
           : resume // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  /// Create a copy of ApplicationModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CompanyCopyWith<$Res>? get company {
-    if (_value.company == null) {
-      return null;
-    }
-
-    return $CompanyCopyWith<$Res>(_value.company!, (value) {
-      return _then(_value.copyWith(company: value) as $Val);
-    });
   }
 }
 
@@ -130,14 +114,11 @@ abstract class _$$ApplicationModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "_id") String? id,
-      String? status,
+      bool? status,
       String? vacancyId,
-      Company? company,
+      String? company,
       String? userId,
       String? resume});
-
-  @override
-  $CompanyCopyWith<$Res>? get company;
 }
 
 /// @nodoc
@@ -168,7 +149,7 @@ class __$$ApplicationModelImplCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       vacancyId: freezed == vacancyId
           ? _value.vacancyId
           : vacancyId // ignore: cast_nullable_to_non_nullable
@@ -176,7 +157,7 @@ class __$$ApplicationModelImplCopyWithImpl<$Res>
       company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
-              as Company?,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -208,11 +189,11 @@ class _$ApplicationModelImpl implements _ApplicationModel {
   @JsonKey(name: "_id")
   final String? id;
   @override
-  final String? status;
+  final bool? status;
   @override
   final String? vacancyId;
   @override
-  final Company? company;
+  final String? company;
   @override
   final String? userId;
   @override
@@ -262,9 +243,9 @@ class _$ApplicationModelImpl implements _ApplicationModel {
 abstract class _ApplicationModel implements ApplicationModel {
   factory _ApplicationModel(
       {@JsonKey(name: "_id") final String? id,
-      final String? status,
+      final bool? status,
       final String? vacancyId,
-      final Company? company,
+      final String? company,
       final String? userId,
       final String? resume}) = _$ApplicationModelImpl;
 
@@ -275,11 +256,11 @@ abstract class _ApplicationModel implements ApplicationModel {
   @JsonKey(name: "_id")
   String? get id;
   @override
-  String? get status;
+  bool? get status;
   @override
   String? get vacancyId;
   @override
-  Company? get company;
+  String? get company;
   @override
   String? get userId;
   @override

@@ -9,8 +9,8 @@ List<Company> companyFromJson(dynamic str) =>
 abstract class Company with _$Company{
   @JsonSerializable(explicitToJson: true,anyMap: true)
   factory Company({
-   @JsonKey(name: "_id") 
-    String? id,
+  
+    String? companyId,
     String? name,
     String? address,
     String? logo,
