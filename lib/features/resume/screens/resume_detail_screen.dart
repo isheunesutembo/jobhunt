@@ -1,4 +1,4 @@
-import 'package:document_viewer/document_viewer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:jobhunt/features/resume/models/resume.dart';

@@ -1,17 +1,12 @@
-
-
-
 import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
-
 import 'package:jobhunt/features/vacancy/repository/vacanciesrepository.dart';
-
 import '../models/vacancy.dart';
 final vacancyControllerProvider=AsyncNotifierProvider<VacancyController,List<Vacancy>>(VacancyController.new);
 final getVacanciesProvider=FutureProvider((ref){
   final vacancies=ref.watch(vacancyControllerProvider.notifier);
+  ref.keepAlive();
   return vacancies.getVacancies();
 
 });
@@ -26,6 +21,7 @@ final searchVacancy=FutureProvider.family((ref,String search){
 });
 final getVacancyBycategoryProvider=FutureProvider.family<List<Vacancy>,String>((ref,String categoryId){
 final vacancy=ref.watch(vacancyControllerProvider.notifier);
+ref.keepAlive();
 return vacancy.getVacanciesByCategory(categoryId);
 });
 class VacancyController extends AsyncNotifier<List<Vacancy>>{
@@ -33,8 +29,9 @@ class VacancyController extends AsyncNotifier<List<Vacancy>>{
   
   @override
   FutureOr<List<Vacancy>>build()async{
+    
     _vacanciesRepository=ref.watch(vacancyRepositoryProvider);
-    state=const AsyncLoading();
+    refreshData();
     return await  getVacancies();
   }
    Future<void> refreshData() async {
@@ -43,6 +40,7 @@ class VacancyController extends AsyncNotifier<List<Vacancy>>{
   }
   Future<List<Vacancy>>getVacancies()async{
     final res=await _vacanciesRepository.getJobVacancies();
+   
     return switch(res){
       Left(value:final l)=> throw l,
       Right(value:final r)=>r

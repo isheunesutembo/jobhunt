@@ -11,32 +11,29 @@ class CompanyProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Card(
-        elevation: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 70,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (company.logo != null ) ...{
-                  Image.network(
-                    company.logo.toString(),
-                    height: 60,
-                    width: 60,
-                  )
-                } else ...{
-                  Image.asset(
-                    "assets/images/developer.png",
-                    height: 60,
-                    width: 60,
-                  )
-                },Text(company!.name.toString(),
-                style:const TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
-                
-              ],
-            ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (company.logo != null ) ...{
+                Image.network(
+                  company.logo.toString(),
+                  height: 60,
+                  width: 60,
+                )
+              } else ...{
+                Image.asset(
+                  "assets/images/developer.png",
+                  height: 60,
+                  width: 60,
+                )
+              },Text(company.name.toString(),
+              style:const TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+              
+            ],
           ),
         ),
       ),

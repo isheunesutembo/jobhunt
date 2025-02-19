@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/favorite/controller/favouritecontroller.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
+import 'package:jobhunt/features/vacancy/widgets/vacancy_tags_list.dart';
+import 'package:jobhunt/features/vacancyapplication/widgets/company_profile_widget.dart';
 import 'package:jobhunt/features/vacancyapplication/widgets/send_application_button.dart';
 
 import '../../vacancy/models/vacancy.dart';
@@ -50,20 +52,11 @@ class FavouriteItemWidget extends ConsumerWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    vacancy.experience.toString(),
-                    style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const SendApplicationButton()
+                 Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: VacancyTagsList(vacancy: vacancy),
+            ),
+               
               ],
             ),
             Positioned(

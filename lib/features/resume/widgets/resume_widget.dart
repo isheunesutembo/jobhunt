@@ -1,4 +1,4 @@
-import 'package:document_viewer/document_viewer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/resume/controllers/resumecontroller.dart';

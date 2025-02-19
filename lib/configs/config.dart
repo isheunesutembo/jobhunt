@@ -1,5 +1,5 @@
 class AppConfig{
-  //android port 10.0.2.2:6013
+  //android port 
   static const baseUrl="127.0.0.1:6013";
   static const baseUrlAndroid="127.0.0.1:6013";
   static const fullImageUrl="http://127.0.0.1:6013/";
@@ -13,6 +13,7 @@ class AppConfig{
   static const companiesUrl="/api/companies";
   static const resumeUrl='/api/resumes';
   static const applicationUrl="/api/applications";
+  static const applicationsByUserUrl="api/applications/applicationsbyuser";
   static const favouriteUrl="/api/favourites";
 
   

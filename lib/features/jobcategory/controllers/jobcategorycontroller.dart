@@ -17,6 +17,8 @@ class JobCategoryController extends AsyncNotifier<AsyncValue<void>>{
     _categoryRepository=ref.watch(categoryRepositoryProvider);
   return const AsyncValue.data(null);
   }
+
+  
   Future<List<Category>>getJobCategories()async{
    final res= await _categoryRepository.getJobCategories();
 

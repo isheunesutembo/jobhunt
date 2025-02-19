@@ -20,6 +20,7 @@ class FavouriteController extends AsyncNotifier<AsyncValue<void>>{
     _favouriteRepository=ref.watch(favouriteRepositoryProvider);
     return const AsyncValue.data(null);
   }
+  
   Future<void>addToFavourite(String vacancyId,String userId,BuildContext context)async{
     final res=await _favouriteRepository.addToFavourites(vacancyId, userId);
     final val= switch(res){
@@ -28,7 +29,7 @@ class FavouriteController extends AsyncNotifier<AsyncValue<void>>{
     };
   }
 
-  Future<List<Favourite>>getFavourite(String userId,)async{
+  Future<List<Favourite>>getFavourite(String userId)async{
     final res=await _favouriteRepository.getFavourites(userId);
     return  switch(res){
       Left(value:final l)=>throw l,

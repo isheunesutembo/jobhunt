@@ -49,4 +49,25 @@ class ApplicationRepository {
       return Left(AppFailure(message: e.toString()));
     }
   }
+
+  Future<Either<AppFailure, List<ApplicationModel>>> getUserApplications(String userId) async {
+    Map<String, String> requestHeaders = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${_localAuthRepository.getUserToken()}"
+    };
+    var url = Uri.http(AppConfig.baseUrl, "${AppConfig.applicationsByUserUrl}/$userId");
+    var response = await _client.get(url, headers: requestHeaders);
+    var data = jsonDecode(response.body);
+
+    try {
+      if (response.statusCode == 200) {
+        return Right(applicationFromJson(data));
+      } else {
+        return Left(AppFailure(message: data['message']));
+      }
+    } catch (e) {
+      return Left(AppFailure(message: e.toString()));
+    }
+  }
 }

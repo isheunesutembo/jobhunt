@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/auth/controller/authcontroller.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
+import 'package:jobhunt/features/jobcategory/controllers/jobcategorycontroller.dart';
 import 'package:jobhunt/features/vacancy/controllers/vacancycontroller.dart';
 import 'package:jobhunt/util/debouncer.dart';
 import 'package:jobhunt/util/errortext.dart';
@@ -47,13 +48,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: ()async{
+       ref.watch(vacancyControllerProvider.notifier).refreshData();
+            },
+          )
+        ],
       
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: RefreshIndicator(
-          onRefresh: ()async{
-            ref.read(vacancyControllerProvider.notifier).refreshData();
+          onRefresh: (){
+            return  ref.refresh(getVacanciesProvider.future);
+           
           },
           child: SingleChildScrollView(
             child: Column(

@@ -9,11 +9,17 @@ part of 'application_model.dart';
 _$ApplicationModelImpl _$$ApplicationModelImplFromJson(Map json) =>
     _$ApplicationModelImpl(
       id: json['_id'] as String?,
-      status: json['status'] as bool?,
-      vacancyId: json['vacancyId'] as String?,
-      company: json['company'] as String?,
+      status: json['status'] as String?,
+      company: json['company'] == null
+          ? null
+          : Company.fromJson(Map<String, dynamic>.from(json['company'] as Map)),
+      resume: json['resume'] == null
+          ? null
+          : Resume.fromJson(Map<String, dynamic>.from(json['resume'] as Map)),
       userId: json['userId'] as String?,
-      resume: json['resume'] as String?,
+      vacancyId: json['vacancyId'] as String?,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
     );
 
 Map<String, dynamic> _$$ApplicationModelImplToJson(
@@ -21,8 +27,10 @@ Map<String, dynamic> _$$ApplicationModelImplToJson(
     <String, dynamic>{
       '_id': instance.id,
       'status': instance.status,
-      'vacancyId': instance.vacancyId,
-      'company': instance.company,
+      'company': instance.company?.toJson(),
+      'resume': instance.resume?.toJson(),
       'userId': instance.userId,
-      'resume': instance.resume,
+      'vacancyId': instance.vacancyId,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
     };

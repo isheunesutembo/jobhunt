@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:jobhunt/features/vacancyapplication/models/application_model.dart';
 import 'package:jobhunt/features/vacancyapplication/repository/application_repository.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/util/utils.dart';
 
 final applicationControllerProvider=AsyncNotifierProvider<ApplicationContoller,AsyncValue<void>>(ApplicationContoller.new);
+
+final getUserApplications=FutureProvider.family((ref,String userId){
+  return ref.watch(applicationControllerProvider.notifier).getUserApplications(userId);
+});
 class ApplicationContoller extends AsyncNotifier<AsyncValue<void>>{
  late ApplicationRepository _applicationRepository;
  late LocalAuthRepository _localAuthRepository;
@@ -26,8 +31,15 @@ class ApplicationContoller extends AsyncNotifier<AsyncValue<void>>{
   };
  }
 
-  
 
+  
+Future<List<ApplicationModel>>getUserApplications(String userId)async{
+  final res=await   _applicationRepository.getUserApplications(userId);
+   return switch(res){
+      Left(value:final l)=> throw l,
+      Right(value:final r)=>r
+    };
+}
  
 
 

@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/favorite/controller/favouritecontroller.dart';
 import 'package:jobhunt/features/resume/controllers/resumecontroller.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
+import 'package:jobhunt/features/vacancy/widgets/vacancy_tags_list.dart';
+import 'package:jobhunt/features/vacancyapplication/widgets/company_profile_widget.dart';
 
 
 import '../models/vacancy.dart';
@@ -50,13 +52,15 @@ class VacancyItemWidget extends ConsumerWidget {
                         fontWeight: FontWeight.w600),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+               
           
                 const SizedBox(
                   height: 10,
                 ),
+                Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: VacancyTagsList(vacancy: vacancy),
+            ),
                
               ],
             ),
