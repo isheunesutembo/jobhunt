@@ -31,25 +31,11 @@ class VacancyApplicationWidget extends ConsumerWidget {
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "\$${data.salary}",
-                style: const TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
+           
            
                   
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: VacancyTagsList(vacancy: data),
-        ),
+           
+        
            
           ],
         ),

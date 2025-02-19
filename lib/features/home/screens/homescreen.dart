@@ -47,15 +47,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     .getVacancies();
     return Scaffold(
       appBar: AppBar(
+       
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: ()async{
-       ref.watch(vacancyControllerProvider.notifier).refreshData();
-            },
-          )
-        ],
+       
       
       ),
       backgroundColor: Colors.white,

@@ -2,13 +2,14 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/features/resume/models/resume.dart';
 
 import 'package:jobhunt/features/resume/repository/resumerepository.dart';
 import 'package:jobhunt/util/utils.dart';
 
 final resumeControllerProvider =
-    AsyncNotifierProvider<ResumeController, AsyncValue<void>>(
+    AsyncNotifierProvider<ResumeController, List<Resume>>(
         ResumeController.new);
 final getResumesProvider=FutureProvider.family<List<Resume>,String>((ref,userId){
 final resume=ref.watch(resumeControllerProvider.notifier);
@@ -16,13 +17,15 @@ return resume.getResumes(userId);
 });
 
 
-class ResumeController extends AsyncNotifier<AsyncValue<void>> {
+class ResumeController extends AsyncNotifier<List<Resume>> {
   late ResumeRepository _resumeRepository;
-
+  late LocalAuthRepository _localAuthRepository;
   @override
-  AsyncValue<void> build() {
+  Future<List<Resume>> build() async{
+    _localAuthRepository=ref.watch(localAuthRepositoryProvider);
     _resumeRepository = ref.watch(resumeRepositoryProvider);
-    return const AsyncValue.data(null);
+    refreshData();
+    return   getResumes(_localAuthRepository.getUserId().toString());
   }
 
   Future<void> uploadResume(
@@ -34,6 +37,8 @@ class ResumeController extends AsyncNotifier<AsyncValue<void>> {
     };
   }
 
+  
+
   Future<List<Resume>> getResumes(String userId) async {
     final res = await _resumeRepository.getUserResumes(userId);
 
@@ -41,6 +46,10 @@ class ResumeController extends AsyncNotifier<AsyncValue<void>> {
       Left(value: final l) => throw l.message,
       Right(value: final r) => r
     };
+  }
+   Future<void> refreshData() async {
+    state = const AsyncValue.loading(); // Set state to loading
+    state = await AsyncValue.guard(() async => await  getResumes(_localAuthRepository.getUserId().toString())); // Fetch new data
   }
 
    Future<void> deleteResume(BuildContext context,String resumeId) async {

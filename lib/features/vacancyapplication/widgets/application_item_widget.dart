@@ -30,7 +30,11 @@ class ApplicationItemWidget extends ConsumerWidget {
              ],
            ),
            VacancyApplicationWidget( vacancyId: applicationModel.vacancyId.toString(),),
-           CompanyProfileWidget(company: applicationModel.company!)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(applicationModel.company!.name.toString(),
+            style: const TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),),
+          )
           ],),
         ),
       ),

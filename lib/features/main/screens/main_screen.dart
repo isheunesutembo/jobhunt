@@ -5,7 +5,7 @@ import 'package:jobhunt/features/favorite/screens/favouritescreen.dart';
 import 'package:jobhunt/features/home/screens/homescreen.dart';
 import 'package:jobhunt/features/profile/screens/profile_screen.dart';
 import 'package:jobhunt/features/settings/screens/settings_screen.dart';
-import 'package:jobhunt/features/vacancyapplication/screens/all_applications_screen.dart';
+
 import 'package:jobhunt/features/vacancyapplication/screens/applications_screen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
