@@ -12,6 +12,8 @@ abstract class UserModel with _$UserModel {
       String? email,
       bool? verification,
       String? phone,
+      String? firstname,
+      String? lastname,
       String? userType,
       String? userToken,
       String? profileImage,

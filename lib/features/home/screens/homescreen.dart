@@ -49,6 +49,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
        
         automaticallyImplyLeading: false,
+        title: const Text("Vacancies",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
        
       
       ),
@@ -64,7 +65,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const JobCategoriesWidget(),
+               
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

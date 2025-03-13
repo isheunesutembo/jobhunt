@@ -1,7 +1,7 @@
 class AppConfig{
   //android port 
   static const baseUrl="127.0.0.1:6013";
-  static const baseUrlAndroid="127.0.0.1:6013";
+  static const baseUrlAndroid=":6013";
   static const fullImageUrl="http://127.0.0.1:6013/";
   static const fullResumeUrl="http://127.0.0.1:6013/";
   static const registerUrl="/api/registerUser";
