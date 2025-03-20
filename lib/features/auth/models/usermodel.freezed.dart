@@ -26,8 +26,8 @@ mixin _$UserModel {
   String? get email => throw _privateConstructorUsedError;
   bool? get verification => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
-  String? get firstname => throw _privateConstructorUsedError;
-  String? get lastname => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
   String? get userType => throw _privateConstructorUsedError;
   String? get userToken => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
@@ -54,8 +54,8 @@ abstract class $UserModelCopyWith<$Res> {
       String? email,
       bool? verification,
       String? phone,
-      String? firstname,
-      String? lastname,
+      String? firstName,
+      String? lastName,
       String? userType,
       String? userToken,
       String? profileImage,
@@ -82,8 +82,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? email = freezed,
     Object? verification = freezed,
     Object? phone = freezed,
-    Object? firstname = freezed,
-    Object? lastname = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? userType = freezed,
     Object? userToken = freezed,
     Object? profileImage = freezed,
@@ -110,13 +110,13 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstname: freezed == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: freezed == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
       userType: freezed == userType
           ? _value.userType
@@ -152,8 +152,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? email,
       bool? verification,
       String? phone,
-      String? firstname,
-      String? lastname,
+      String? firstName,
+      String? lastName,
       String? userType,
       String? userToken,
       String? profileImage,
@@ -178,8 +178,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? verification = freezed,
     Object? phone = freezed,
-    Object? firstname = freezed,
-    Object? lastname = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? userType = freezed,
     Object? userToken = freezed,
     Object? profileImage = freezed,
@@ -206,13 +206,13 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstname: freezed == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: freezed == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
       userType: freezed == userType
           ? _value.userType
@@ -244,8 +244,8 @@ class _$UserModelImpl implements _UserModel {
       this.email,
       this.verification,
       this.phone,
-      this.firstname,
-      this.lastname,
+      this.firstName,
+      this.lastName,
       this.userType,
       this.userToken,
       this.profileImage,
@@ -266,9 +266,9 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String? phone;
   @override
-  final String? firstname;
+  final String? firstName;
   @override
-  final String? lastname;
+  final String? lastName;
   @override
   final String? userType;
   @override
@@ -280,7 +280,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, email: $email, verification: $verification, phone: $phone, firstname: $firstname, lastname: $lastname, userType: $userType, userToken: $userToken, profileImage: $profileImage, refreshToken: $refreshToken)';
+    return 'UserModel(id: $id, username: $username, email: $email, verification: $verification, phone: $phone, firstName: $firstName, lastName: $lastName, userType: $userType, userToken: $userToken, profileImage: $profileImage, refreshToken: $refreshToken)';
   }
 
   @override
@@ -295,10 +295,10 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.verification, verification) ||
                 other.verification == verification) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.firstname, firstname) ||
-                other.firstname == firstname) &&
-            (identical(other.lastname, lastname) ||
-                other.lastname == lastname) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
             (identical(other.userToken, userToken) ||
@@ -318,8 +318,8 @@ class _$UserModelImpl implements _UserModel {
       email,
       verification,
       phone,
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       userType,
       userToken,
       profileImage,
@@ -348,8 +348,8 @@ abstract class _UserModel implements UserModel {
       final String? email,
       final bool? verification,
       final String? phone,
-      final String? firstname,
-      final String? lastname,
+      final String? firstName,
+      final String? lastName,
       final String? userType,
       final String? userToken,
       final String? profileImage,
@@ -370,9 +370,9 @@ abstract class _UserModel implements UserModel {
   @override
   String? get phone;
   @override
-  String? get firstname;
+  String? get firstName;
   @override
-  String? get lastname;
+  String? get lastName;
   @override
   String? get userType;
   @override

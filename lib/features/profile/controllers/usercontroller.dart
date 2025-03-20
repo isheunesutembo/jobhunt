@@ -35,7 +35,7 @@ class UserController extends AsyncNotifier<AsyncValue<void>>{
       File profileImage,String username ,String firstname,String lastname,String userId, BuildContext context) async {
     final res = await _userRepository.updateUserData(profileImage,username,firstname,lastname,username);
     final val = switch (res) {
-      Right(value: final r) => showSnackBar(context, "upload successful"),
+      Right(value: final r) => showSnackBar(context, "profile updated successfully"),
       Left(value: final l) => showSnackBar(context, l.toString())
     };}
 }

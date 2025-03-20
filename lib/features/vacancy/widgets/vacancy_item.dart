@@ -22,6 +22,7 @@ class VacancyItemWidget extends ConsumerWidget {
     final resume = ref.watch(getResumesProvider(userId!));
     return Card(
       elevation: 5,
+      color: Colors.white,
       child: SizedBox(
         child: Stack(
           children: [

@@ -56,8 +56,8 @@ class UserRepository {
     request.files.add(
         await http.MultipartFile.fromPath("profileImage", profileImage.path));
     request.headers.addAll(requestHeaders);
-    request.fields["firstname"] = firstname;
-    request.fields["lastname"] = lastname;
+    request.fields["firstName"] = firstname;
+    request.fields["lastName"] = lastname;
     request.fields["username"] = username;
     try {
       var streamResponse = await request.send();

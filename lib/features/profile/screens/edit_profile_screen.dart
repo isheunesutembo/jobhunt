@@ -19,11 +19,9 @@ class EditProfileScreen extends ConsumerStatefulWidget {
 
 class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   File? image;
-  final firstNameController=TextEditingController();
-  final lastNameController=TextEditingController();
-  final usernameController=TextEditingController();
-
-  
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final usernameController = TextEditingController();
 
   Future pickImage() async {
     try {
@@ -58,49 +56,53 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-      final userId=ref.read(localAuthRepositoryProvider).getUserId();
-    final userData=ref.watch(getUserDataProvider(userId.toString()));
+    final userId = ref.read(localAuthRepositoryProvider).getUserId();
+    final userData = ref.watch(getUserDataProvider(userId.toString()));
     return Scaffold(
-      appBar: AppBar(
-         title: const Text(
+        appBar: AppBar(
+          title: const Text(
             "Edit My Profile",
             style: TextStyle(
                 color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
           ),
-      ),
-      body: userData.when(data: (data){
-        return SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          spacing: 20,
-          children: [
-
-            GestureDetector(
-              onTap:(){
-                selectProfileImage();
-              } ,
-              child: Center(
-                child: image!=null?
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 60,
-                  backgroundImage: FileImage(image!),
-                ):Center(
-                
-                  child:data.profileImage!=null?CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 60,
-                    backgroundImage: NetworkImage(data.fullProfileImagePath),
-                  ):const CircleAvatar(backgroundColor: Colors.white,radius: 60,backgroundImage: AssetImage("assets/images/person.png"),)
-                )
-              ),
-            ),
-
-             Padding(
+        ),
+        body: userData.when(
+            data: (data) {
+              return SafeArea(
+                  child: SingleChildScrollView(
+                child: Column(
+                  spacing: 20,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        selectProfileImage();
+                      },
+                      child: Center(
+                          child: image != null
+                              ? CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 60,
+                                  backgroundImage: FileImage(image!),
+                                )
+                              : Center(
+                                  child: data.profileImage != null
+                                      ? CircleAvatar(
+                                          backgroundColor: Colors.white,
+                                          radius: 60,
+                                          backgroundImage: NetworkImage(
+                                              data.fullProfileImagePath),
+                                        )
+                                      : const CircleAvatar(
+                                          backgroundColor: Colors.white,
+                                          radius: 60,
+                                          backgroundImage: AssetImage(
+                                              "assets/images/person.png"),
+                                        ))),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                       
-                        controller:firstNameController ,
+                        controller: firstNameController,
                         enableSuggestions: true,
                         keyboardType: TextInputType.text,
                         onChanged: (value) {
@@ -126,8 +128,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                       
-                        controller:lastNameController ,
+                        controller: lastNameController,
                         enableSuggestions: true,
                         keyboardType: TextInputType.text,
                         onChanged: (value) {
@@ -153,12 +154,11 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        
-                        controller:firstNameController ,
+                        controller: usernameController,
                         enableSuggestions: true,
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
-                          firstNameController.text = value;
+                          usernameController.text = value;
                         },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -177,21 +177,30 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         }),
                       ),
                     ),
-
                     Center(
                       child: SizedBox(
                         width: 350,
                         height: 50,
-                        child: ElevatedButton(onPressed: (){
-                        
-                        }, child: const Text("Update Profile")),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              ref
+                                  .read(userControllerProvider.notifier)
+                                  .updateUserData(
+                                      image!,
+                                      usernameController.text,
+                                      firstNameController.text,
+                                      lastNameController.text,
+                                      userId.toString(),
+                                      context);
+                            },
+                            child: const Text("Update Profile")),
                       ),
                     )
-                  
-          ],
-        ),
-      ));
-      }, error: (error,stackTrace)=>ErrorText(error: error.toString()), loading: ()=>Loader())
-    );
+                  ],
+                ),
+              ));
+            },
+            error: (error, stackTrace) => ErrorText(error: error.toString()),
+            loading: () => const Loader()));
   }
 }

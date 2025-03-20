@@ -73,7 +73,7 @@ class ProfileScreen extends ConsumerWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            data.firstname.toString(),
+                            data.firstName.toString(),
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 15,
@@ -95,7 +95,7 @@ class ProfileScreen extends ConsumerWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            data.lastname.toString(),
+                            data.lastName.toString(),
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 15,

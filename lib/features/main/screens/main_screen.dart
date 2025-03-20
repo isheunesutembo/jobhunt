@@ -50,7 +50,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                 label: "Jobs"),
                   BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.mail_outline,
+                  Icons.email_outlined,
                   color: Colors.black,
                   size: 30,
                 ),

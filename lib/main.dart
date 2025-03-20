@@ -11,6 +11,8 @@ import 'package:jobhunt/features/profile/screens/profile_screen.dart';
 import 'package:jobhunt/features/auth/screens/register_screen.dart';
 import 'package:jobhunt/features/resume/screens/resume_detail_screen.dart';
 import 'package:jobhunt/features/resume/screens/resume_screen.dart';
+import 'package:jobhunt/features/vacancyapplication/screens/applications_screen.dart';
+import 'package:jobhunt/util/color.dart';
 
 
 Widget _defaultHome=const SignInScreen();
@@ -33,6 +35,9 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context,WidgetRef ref) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(surface: AppColors.backgroundColor,primary: AppColors.backgroundColor)
+      ),
       routes: {
         '/':(context)=> _defaultHome,
         '/mainscreen':(context)=>const MainScreen(),
@@ -44,7 +49,8 @@ class MyApp extends ConsumerWidget {
         '/addresumescreen':(context)=>const AddResumeScreen(),
         '/resumedetailscreen':(context)=>const ResumeDetailScreen(),
         '/applicationconfirmationscreen':(context)=>const ApplicationConfirmationScreen(),
-        '/editprofilescreen':(context)=>const EditProfileScreen()
+        '/editprofilescreen':(context)=>const EditProfileScreen(),
+        "/applicationscreen":(context)=>const ApplicationsScreen()
 
       },
       

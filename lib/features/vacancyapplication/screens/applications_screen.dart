@@ -40,7 +40,7 @@ class _ApplicationsScreenState extends ConsumerState<ApplicationsScreen>
           style: TextStyle(
               color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        bottom: TabBar(controller: _tabController, tabs: const [
+        bottom: TabBar(indicatorColor: Colors.red,controller: _tabController, tabs: const [
           Text(
             "Pending",
             style: TextStyle(

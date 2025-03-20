@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/auth/controller/authcontroller.dart';
+import 'package:jobhunt/util/custom_text_field.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
@@ -10,9 +11,9 @@ class RegisterScreen extends ConsumerStatefulWidget {
 }
 
 class _RegisterScreenState extends ConsumerState<RegisterScreen> {
-  String _email="";
-  String _password="";
-  String _username="";
+  final _emailController=TextEditingController();
+  final _passwordController=TextEditingController();
+  final _usernameController=TextEditingController();
    bool isAsyncCallProcess = false;
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool validateAndSave(){
@@ -25,94 +26,64 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     } 
   }
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _usernameController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0,backgroundColor: Colors.white,
+      appBar: AppBar(elevation: 0,
       automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
       child: Column(mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,children: [
-        const SizedBox(height: 120,),
+   const Center(child: Text("Welcome,Register",style: TextStyle(color: Colors.black,fontSize: 32,fontWeight: FontWeight.bold),)),
+   const SizedBox(height: 20,),
         Form(key: _formKey,child: Column(children: [
            Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        keyboardType: TextInputType.emailAddress,
-                        onChanged: (value) {
-                          _email = value;
-                        },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          hintText: 'email:',
-                          hintStyle: const TextStyle(color: Colors.black),
-                          prefixIcon: const Icon(Icons.email_outlined,
-                              color: Colors.black, size: 20),
-                          alignLabelWithHint: true,
-                        ),
-                        validator: ((value) {
-                          if (value!.isEmpty || !value.contains("@")) {
-                            return "Invalid email address";
-                          }
-                          return null;
-                        }),
-                      ),
+                      child:CustomTextField(controller:_emailController,hintText: "Enter Your Email:",)
                     ),
                     const SizedBox(height: 15,),
-                      Padding(
+                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        keyboardType: TextInputType.text,
-                        onChanged: (value) {
-                          _username = value;
-                        },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                           hintText: 'username',
-                          hintStyle: const TextStyle(color: Colors.black),
-                          prefixIcon: const Icon(Icons.person_2,
-                              color: Colors.black, size: 20),
-                          alignLabelWithHint: true,
-                        ),
-                        validator: ((value) {
-                          if (value!.isEmpty ) {
-                            return "Invalid username";
-                          }
-                          return null;
-                        }),
-                      ),
+                      child:CustomTextField(controller:_usernameController,hintText: "Enter Your Username:",)
                     ),
                     const SizedBox(height: 15,),
                   
                       Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        keyboardType: TextInputType.emailAddress,
-                        onChanged: (value) {
-                          _password = value;
-                        },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          hintText: 'password:',
-                          hintStyle: const TextStyle(color: Colors.black),
-                          prefixIcon: const Icon(Icons.password,
-                              color: Colors.black, size: 20),
-                          alignLabelWithHint: true,
-                        ),
-                        validator: ((value) {
-                          if (value!.isEmpty ) {
-                            return "Invalid  password";
-                          }
-                          return null;
-                        }),
-                      ),
+                      child:CustomTextField(controller:_passwordController,hintText: "Enter Your Password",)
                     ),
-                    const SizedBox(height: 15,),
+                  
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: SizedBox(
+                          width: double.infinity,
+                          height: 70,
+                          child: ElevatedButton(
+                            onPressed: () async{
+                              ref.read(authControllerProvider.notifier)
+                              .registerWithEmailPassword(_emailController.text, _usernameController.text, _passwordController.text, context);
+                              
+                            },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                                )),
+                            child: const Text("Register",style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),),
+                          )),
+                     ),
+                          const SizedBox(height: 15,),
                     GestureDetector(
                         onTap: () {
                          Navigator.pushNamed(context, '/');
@@ -123,19 +94,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.w500)),
+                                  fontWeight: FontWeight.w600)),
                         )),
-                     SizedBox(
-                        width: 300,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () async{
-                            ref.read(authControllerProvider.notifier)
-                            .registerWithEmailPassword(_email, _username, _password, context);
-                            
-                          },
-                          child: const Text("Register"),
-                        ))
         ],))
        
 

@@ -32,8 +32,7 @@ class SettingsScreen extends ConsumerWidget {
             child:
                 SettingsItemWidget(title: "My Resume", icon: Icons.arrow_right),
           ),
-          SettingsItemWidget(
-              title: "Vacancy Application History", icon: Icons.arrow_right),
+        
           GestureDetector(onTap: (){
             ref.read(localAuthRepositoryProvider)
             .logOut(context);
