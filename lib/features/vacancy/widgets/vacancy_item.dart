@@ -50,7 +50,7 @@ class VacancyItemWidget extends ConsumerWidget {
                     style: const TextStyle(
                         fontSize: 15,
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
                
@@ -62,6 +62,15 @@ class VacancyItemWidget extends ConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               child: VacancyTagsList(vacancy: vacancy),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                         vacancy.company!.logo!=null?   CircleAvatar(backgroundColor: Colors.white,radius: 30,backgroundImage: NetworkImage(vacancy.company!.logo.toString()),):
+                         const CircleAvatar(backgroundColor: Colors.white,radius: 30,backgroundImage:AssetImage("assets/images/person.png") ),
+                Text(vacancy.company!.name.toString(),
+                style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.black),)
+              ],),
+            )
                
               ],
             ),
@@ -73,7 +82,7 @@ class VacancyItemWidget extends ConsumerWidget {
                       addToFavorites.addToFavourite(
                           vacancy.vacancyId!, userId!, context);
                     },
-                    child: const Icon(Icons.favorite)))
+                    child: Image.asset("assets/images/favourite.png",height: 20,width: 20,)))
           ],
         ),
       ),

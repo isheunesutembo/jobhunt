@@ -40,34 +40,20 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.black,
           onTap: _onItemTap,
-          items: const <BottomNavigationBarItem>[
+          items:  <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                  size: 30,
-                ),
+                icon: Image.asset("assets/images/home.png",height: 30,width: 30,),
                 label: "Jobs"),
                   BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.email_outlined,
-                  color: Colors.black,
-                  size: 30,
-                ),
+                icon: Image.asset("assets/images/suitcase.png",height: 30,width: 30,),
                 label: "Applications"),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite_outline,
-                  color: Colors.black,
-                  size: 30,
+                icon: Image.asset(
+                  "assets/images/heart.png",height: 30,width: 30,
                 ),
                 label: "Favourites"),
                  BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings_outlined,
-                  color: Colors.black,
-                  size: 30,
-                ),
+                icon: Image.asset("assets/images/settings.png",height: 30,width: 30,),
                 label: "Settings"),
            
          

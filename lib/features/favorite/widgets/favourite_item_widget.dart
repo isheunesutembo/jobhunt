@@ -18,6 +18,7 @@ class FavouriteItemWidget extends ConsumerWidget {
     final userId = ref.watch(localAuthRepositoryProvider).getUserId();
 
     return Card(
+      color: Colors.white,
       elevation: 5,
       child: SizedBox(
         child: Stack(

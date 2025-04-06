@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
@@ -48,11 +47,13 @@ class UserRepository {
       String username, String firstname, String lastname, String userId) async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
-      "Authorization": "Bearer ${_localAuthRepository.getUserToken()}"
+      "Authorization": "Bearer ${_localAuthRepository.getUserToken()}",
+      "Content-Type": "multipart/form-data",
+    
     };
 
     var url = Uri.http(AppConfig.baseUrl, "${AppConfig.usersUrl}/$userId");
-    var request = http.MultipartRequest('PUT', Uri.parse(url.toString()));
+    var request = http.MultipartRequest('PATCH', Uri.parse(url.toString()));
     request.files.add(
         await http.MultipartFile.fromPath("profileImage", profileImage.path));
     request.headers.addAll(requestHeaders);

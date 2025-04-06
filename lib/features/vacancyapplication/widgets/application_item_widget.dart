@@ -15,6 +15,7 @@ class ApplicationItemWidget extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Card(
+          color: Colors.white,
           elevation: 5,
           child: Column(mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,children: [

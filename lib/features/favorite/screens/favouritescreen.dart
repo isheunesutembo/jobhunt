@@ -12,19 +12,16 @@ class FavouriteScreen extends ConsumerWidget {
     final userId=ref.read(localAuthRepositoryProvider).getUserId();
     final favourites = ref.watch(getFavourites(userId.toString()));
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-            child: Text(
-          "Favourites",
-          style: TextStyle(color: Colors.black, fontSize: 20),
-        )),
-      ),
+     
       body:  SafeArea(
         child: RefreshIndicator(
+          backgroundColor: Colors.black,
           onRefresh: () => ref.refresh(getFavourites(userId.toString()).future),
           child: const SingleChildScrollView(
                   child: Column(
+                    spacing: 10,
           children: [
+            Center(child: Text("Favourites",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),
             FavouritesList()
           ],
                   ),

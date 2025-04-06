@@ -28,7 +28,7 @@ class JobCategoriesWidget extends ConsumerWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(backgroundColor: Colors.white,radius: 40,child: Image.network(categories.fullImagePath!,height: 40,width: 40,)),
+              CircleAvatar(backgroundColor: Colors.black,radius: 40,child: Image.network(categories.fullImagePath!,height: 40,width: 40,)),
               Text(categories.title!,style:const  TextStyle(fontSize: 12,fontWeight: FontWeight.w500 ),)
             
             ],),

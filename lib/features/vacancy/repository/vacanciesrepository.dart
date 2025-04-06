@@ -64,7 +64,7 @@ class VacanciesRepository {
       'Charset': 'utf-8'
     };
     var url =
-        Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}?search=$search");
+        Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}/search?query=$search");
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
 

@@ -11,13 +11,14 @@ class ApplicationConfirmationScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset("assets/images/check.png",
-            height: 90,
-            width: 90,
+            child: Image.asset("assets/images/confirmation.png",
+            height: 150,
+            width: 150,
             fit: BoxFit.fill,),
           ),
+          const SizedBox(height: 30,),
          const Text("Application Sent ",
-          style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+          style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
           GestureDetector(
             onTap: (){
               Navigator.pushNamed(context, "/");

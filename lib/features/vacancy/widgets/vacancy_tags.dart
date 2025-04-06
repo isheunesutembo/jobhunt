@@ -8,7 +8,7 @@ class VacancyTags extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(2.0),
-      child: Chip(label: Text(tag,style:const TextStyle(color: Colors.black),),),
+      child: Chip(backgroundColor: Colors.white,label: Text(tag,style:const TextStyle(color: Colors.black),),),
     );
   }
 }

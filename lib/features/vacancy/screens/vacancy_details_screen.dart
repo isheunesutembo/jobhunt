@@ -48,53 +48,87 @@ class VacancyDetailsScreen extends ConsumerWidget {
                 style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
-                    fontWeight: FontWeight.w800),
+                    fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(
               height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text("Salary:",style:TextStyle(fontWeight: FontWeight.w800)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "\$${vacancy.salary.toString()}",
                 style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 13,
                     color: Colors.black,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w300),
               ),
+            ),
+       const     Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text("Experience",style: TextStyle(fontWeight: FontWeight.w800),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                vacancy.experience.toString(),
+                vacancy.experience??"",
                 style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 13,
                     color: Colors.black,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w300),
               ),
             ),
             const SizedBox(
               height: 10,
+            ),
+         const   Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text("Job Description:",style: TextStyle(fontWeight: FontWeight.w800),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 vacancy.description.toString(),
                 style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500),
+                    fontSize: 13,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w300),
               ),
+            ),
+          const  Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text("Job Requirements",style: TextStyle(fontWeight: FontWeight.w800),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(vacancy.requirements??"",style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300),),
+            ),
+              const  Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text("Benefits",style: TextStyle(fontWeight: FontWeight.w800),),
+            ),
+              Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(vacancy.benefits??"",style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300),),
             ),
              Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: SizedBox(
-                      height: 50,
-                      width: 300,
+                      height: 67,
+                      width: 350,
                       child: ElevatedButton(onPressed: (){
-                        showModalBottomSheet(context: context, builder: (BuildContext context){
+                        showModalBottomSheet(backgroundColor: Colors.white,context: context, builder: (BuildContext context){
                           return   SafeArea(
                             child: SizedBox(height: 500,
                             width: double.infinity,
@@ -128,7 +162,10 @@ class VacancyDetailsScreen extends ConsumerWidget {
                             ],),),
                           );
                         });
-                      },style: ElevatedButton.styleFrom(backgroundColor: Colors.black), child: const Text("apply",
+                      },style: ElevatedButton.styleFrom(backgroundColor: Colors.black,
+                      shape:RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                      ) ), child: const Text("apply",
                       style:  TextStyle(color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),)),

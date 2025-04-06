@@ -21,17 +21,17 @@ class CompanyProfileWidget extends StatelessWidget {
               if (company.logo != null ) ...{
                 Image.network(
                   company.logo.toString(),
-                  height: 60,
-                  width: 60,
+                  height: 50,
+                  width: 50,
                 )
               } else ...{
                 Image.asset(
                   "assets/images/developer.png",
-                  height: 60,
-                  width: 60,
+                  height: 50,
+                  width: 50,
                 )
               },Text(company.name.toString(),
-              style:const TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+              style:const TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.w600),),
               
             ],
           ),
