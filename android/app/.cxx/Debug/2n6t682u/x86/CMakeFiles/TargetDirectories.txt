@@ -1,0 +1,2 @@
+/Users/isheunesutembo/softwareprojects/jobhuntcustomerapp/jobhunt/android/app/.cxx/Debug/2n6t682u/x86/CMakeFiles/edit_cache.dir
+/Users/isheunesutembo/softwareprojects/jobhuntcustomerapp/jobhunt/android/app/.cxx/Debug/2n6t682u/x86/CMakeFiles/rebuild_cache.dir

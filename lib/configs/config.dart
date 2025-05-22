@@ -1,8 +1,29 @@
+import 'dart:io';
+
 class AppConfig{
+  static String get baseUrl {
+  if (Platform.isAndroid) {
+    return "10.0.2.2:6013"; 
+  } else if (Platform.isIOS) {
+    return "127.0.0.1:6013"; 
+  } else {
+    return "http://localhost:6013"; 
+  }
+}
+
+
+static String get fullImageUrl {
+  if (Platform.isAndroid) {
+    return "http://10.0.2.2:6013"; 
+  } else if (Platform.isIOS) {
+    return "http://127.0.0.1:6013"; 
+  } else {
+    return "http://localhost:6013"; 
+  }
+}
   //android port 
-  static const baseUrl="127.0.0.1:6013";
+
   static const baseUrlAndroid=":6013";
-  static const fullImageUrl="http://127.0.0.1:6013/";
   static const fullResumeUrl="http://127.0.0.1:6013/";
   static const registerUrl="/api/registerUser";
   static const logInUrl="/api/logInUser";

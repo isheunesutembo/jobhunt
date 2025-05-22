@@ -27,7 +27,6 @@ mixin _$Vacancy {
   String? get experience => throw _privateConstructorUsedError;
   String? get salary => throw _privateConstructorUsedError;
   String? get benefits => throw _privateConstructorUsedError;
-  Category? get category => throw _privateConstructorUsedError;
   Company? get company => throw _privateConstructorUsedError;
   String? get vacancyId => throw _privateConstructorUsedError;
 
@@ -53,11 +52,9 @@ abstract class $VacancyCopyWith<$Res> {
       String? experience,
       String? salary,
       String? benefits,
-      Category? category,
       Company? company,
       String? vacancyId});
 
-  $CategoryCopyWith<$Res>? get category;
   $CompanyCopyWith<$Res>? get company;
 }
 
@@ -83,7 +80,6 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
     Object? experience = freezed,
     Object? salary = freezed,
     Object? benefits = freezed,
-    Object? category = freezed,
     Object? company = freezed,
     Object? vacancyId = freezed,
   }) {
@@ -116,10 +112,6 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
           ? _value.benefits
           : benefits // ignore: cast_nullable_to_non_nullable
               as String?,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category?,
       company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
@@ -129,20 +121,6 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
           : vacancyId // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  /// Create a copy of Vacancy
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryCopyWith<$Res>? get category {
-    if (_value.category == null) {
-      return null;
-    }
-
-    return $CategoryCopyWith<$Res>(_value.category!, (value) {
-      return _then(_value.copyWith(category: value) as $Val);
-    });
   }
 
   /// Create a copy of Vacancy
@@ -175,12 +153,9 @@ abstract class _$$VacancyImplCopyWith<$Res> implements $VacancyCopyWith<$Res> {
       String? experience,
       String? salary,
       String? benefits,
-      Category? category,
       Company? company,
       String? vacancyId});
 
-  @override
-  $CategoryCopyWith<$Res>? get category;
   @override
   $CompanyCopyWith<$Res>? get company;
 }
@@ -205,7 +180,6 @@ class __$$VacancyImplCopyWithImpl<$Res>
     Object? experience = freezed,
     Object? salary = freezed,
     Object? benefits = freezed,
-    Object? category = freezed,
     Object? company = freezed,
     Object? vacancyId = freezed,
   }) {
@@ -238,10 +212,6 @@ class __$$VacancyImplCopyWithImpl<$Res>
           ? _value.benefits
           : benefits // ignore: cast_nullable_to_non_nullable
               as String?,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category?,
       company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
@@ -266,7 +236,6 @@ class _$VacancyImpl implements _Vacancy {
       this.experience,
       this.salary,
       this.benefits,
-      this.category,
       this.company,
       this.vacancyId})
       : _skillTags = skillTags;
@@ -297,15 +266,13 @@ class _$VacancyImpl implements _Vacancy {
   @override
   final String? benefits;
   @override
-  final Category? category;
-  @override
   final Company? company;
   @override
   final String? vacancyId;
 
   @override
   String toString() {
-    return 'Vacancy(title: $title, description: $description, requirements: $requirements, skillTags: $skillTags, experience: $experience, salary: $salary, benefits: $benefits, category: $category, company: $company, vacancyId: $vacancyId)';
+    return 'Vacancy(title: $title, description: $description, requirements: $requirements, skillTags: $skillTags, experience: $experience, salary: $salary, benefits: $benefits, company: $company, vacancyId: $vacancyId)';
   }
 
   @override
@@ -325,8 +292,6 @@ class _$VacancyImpl implements _Vacancy {
             (identical(other.salary, salary) || other.salary == salary) &&
             (identical(other.benefits, benefits) ||
                 other.benefits == benefits) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
             (identical(other.company, company) || other.company == company) &&
             (identical(other.vacancyId, vacancyId) ||
                 other.vacancyId == vacancyId));
@@ -343,7 +308,6 @@ class _$VacancyImpl implements _Vacancy {
       experience,
       salary,
       benefits,
-      category,
       company,
       vacancyId);
 
@@ -372,7 +336,6 @@ abstract class _Vacancy implements Vacancy {
       final String? experience,
       final String? salary,
       final String? benefits,
-      final Category? category,
       final Company? company,
       final String? vacancyId}) = _$VacancyImpl;
 
@@ -392,8 +355,6 @@ abstract class _Vacancy implements Vacancy {
   String? get salary;
   @override
   String? get benefits;
-  @override
-  Category? get category;
   @override
   Company? get company;
   @override

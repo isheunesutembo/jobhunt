@@ -21,38 +21,37 @@ class _ResumeWidgetState extends ConsumerState<ResumeWidget> {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  "assets/images/pdf.png",
-                  height: 60,
-                  width: 60,
-                  fit: BoxFit.fill,
+          height: 113,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    "assets/images/pdficon.png",
+                    height: 60,
+                    width: 60,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              Text(
-                widget.resume.title.toString(),
-                style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black),
-              ),
-              GestureDetector(
-                  onTap: () {
-                    ref
-                        .read(resumeControllerProvider.notifier)
-                        .deleteResume(context, widget.resume.id.toString());
-                  },
-                  child: const Icon(
-                    Icons.delete,
-                    color: Colors.black,
-                    size: 30,
-                  ))
-            ],
+                Text(
+                  widget.resume.title??"",
+                  style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                GestureDetector(
+                    onTap: () {
+                      ref
+                          .read(resumeControllerProvider.notifier)
+                          .deleteResume(context, widget.resume.id.toString());
+                    },
+                    child: Image.asset("assets/images/deleteicon.png",height: 35,width: 35,))
+              ],
+            ),
           ),
         ),
       ),

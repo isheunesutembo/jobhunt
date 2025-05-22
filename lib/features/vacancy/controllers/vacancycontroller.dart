@@ -10,14 +10,20 @@ final getVacanciesProvider=FutureProvider((ref){
   return vacancies.getVacancies();
 
 });
+final searchQueryProvider = StateProvider<String>((ref) => "");
 final getVacancyById=FutureProvider.family((ref,String id){
   final vacancy=ref.watch(vacancyControllerProvider.notifier);
   return vacancy.getVacancyById(id);
 });
 
-final searchVacancy=FutureProvider.family((ref,String search){
+final searchVacancy=FutureProvider<List<Vacancy>>((ref)async{
   final vacancy=ref.watch(vacancyControllerProvider.notifier);
-  return vacancy.searchVacancies(search);
+  final query=ref.watch(searchQueryProvider);
+  if(query.isEmpty){
+    return await  vacancy.getVacancies();
+  }else{
+    return await vacancy.searchVacancies(query);
+  }
 });
 final getVacancyBycategoryProvider=FutureProvider.family<List<Vacancy>,String>((ref,String categoryId){
 final vacancy=ref.watch(vacancyControllerProvider.notifier);
@@ -66,7 +72,7 @@ class VacancyController extends AsyncNotifier<List<Vacancy>>{
     final res=await _vacanciesRepository.searchVacancies(search);
     return switch(res){
       Left(value:final l)=>throw l,
-      Right(value:final r)=>throw r
+      Right(value:final r)=> r
     };
   }
   

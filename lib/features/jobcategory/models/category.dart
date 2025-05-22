@@ -16,6 +16,6 @@ abstract class Category with _$Category{
     factory Category.fromJson(Map<String,dynamic>json)=> _$CategoryFromJson(json);
 }
 extension CategoryExt on Category{
-  String get fullImagePath=>AppConfig.fullImageUrl+image!;
+  String get fullImagePath=>"${AppConfig.fullImageUrl}/${image!}";
 }
 

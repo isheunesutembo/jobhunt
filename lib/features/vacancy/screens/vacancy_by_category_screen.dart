@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/vacancy/controllers/vacancycontroller.dart';
+import 'package:jobhunt/util/custom_circle_icon_widget.dart';
 
 import 'package:jobhunt/util/errortext.dart';
 import 'package:jobhunt/util/loader.dart';
@@ -36,7 +37,23 @@ class VacanciesByCategoryScreen extends ConsumerWidget {
                     child: VacancyItemWidget(
                       vacancy: data[index],
                     ));
-              }):const Center(child: Text("No vacancies"),);
+              }): Scaffold(body: Column(
+                children: [
+                  const SizedBox(height: 30,),
+                    Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                GestureDetector(onTap:(){
+                  Navigator.pop(context);
+                },child: GestureDetector(onTap: (){
+                  Navigator.pop(context);
+                },child: CustomCircleIconWidget(icon: Image.asset("assets/images/backicon.png")))),
+                
+              ],),
+            ),
+                  const Center(child: Text("No vacancies"),),
+                ],
+              ));
         },
         error: (error, stackTrace) => ErrorText(error: error.toString()),
         loading: () => const Loader());

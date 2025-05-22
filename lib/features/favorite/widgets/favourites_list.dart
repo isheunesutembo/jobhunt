@@ -32,7 +32,7 @@ class FavouritesList extends ConsumerWidget {
                               builder: (context) =>
                                   const VacancyDetailsScreen(),
                               settings: RouteSettings(
-                                  arguments: data[index].vacancy)));
+                                  arguments: data[index].vacancy!)));
                     },
                     child: FavouriteItemWidget(
                       vacancy: data[index].vacancy!,

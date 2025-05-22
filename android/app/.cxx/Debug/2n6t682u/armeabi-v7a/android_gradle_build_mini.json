@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/isheunesutembo/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/isheunesutembo/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/isheunesutembo/softwareprojects/jobhuntcustomerapp/jobhunt/android/app/.cxx/Debug/2n6t682u/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/isheunesutembo/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/isheunesutembo/softwareprojects/jobhuntcustomerapp/jobhunt/android/app/.cxx/Debug/2n6t682u/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

@@ -3,10 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/features/vacancyapplication/controller/application_controller.dart';
 import 'package:jobhunt/features/vacancyapplication/screens/application_list_screen.dart';
-
 import 'package:jobhunt/util/errortext.dart';
 import 'package:jobhunt/util/loader.dart';
-
 import '../../../util/utils.dart';
 
 class ApplicationsScreen extends ConsumerStatefulWidget {

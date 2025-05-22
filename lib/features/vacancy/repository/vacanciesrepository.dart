@@ -27,7 +27,7 @@ class VacanciesRepository {
 
     try {
       if (response.statusCode == 200) {
-        return Right(vacanciesFromJson(data));
+        return Right(vacanciesFromJson(data['vacancies']));
       } else {
         return Left(AppFailure(message: data['message']));
       }
@@ -41,7 +41,7 @@ class VacanciesRepository {
       "Accept": "application/json",
       "Content-Type": "application/json"
     };
-    var url = Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}/$categoryId");
+    var url = Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}/vacancyByCategory/$categoryId");
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
 
@@ -64,13 +64,13 @@ class VacanciesRepository {
       'Charset': 'utf-8'
     };
     var url =
-        Uri.http(AppConfig.baseUrl, "${AppConfig.vacanciesUrl}/search?query=$search");
+        Uri.parse("http://${AppConfig.baseUrl}${AppConfig.vacanciesUrl}/search?query=$search");
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
 
     try {
       if (response.statusCode == 200) {
-        return Right(vacanciesFromJson(data));
+        return Right(vacanciesFromJson(data["vacancies"]));
       } else {
         return Left(AppFailure(message: data['message']));
       }

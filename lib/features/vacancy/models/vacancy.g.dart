@@ -16,10 +16,6 @@ _$VacancyImpl _$$VacancyImplFromJson(Map json) => _$VacancyImpl(
       experience: json['experience'] as String?,
       salary: json['salary'] as String?,
       benefits: json['benefits'] as String?,
-      category: json['category'] == null
-          ? null
-          : Category.fromJson(
-              Map<String, dynamic>.from(json['category'] as Map)),
       company: json['company'] == null
           ? null
           : Company.fromJson(Map<String, dynamic>.from(json['company'] as Map)),
@@ -35,7 +31,6 @@ Map<String, dynamic> _$$VacancyImplToJson(_$VacancyImpl instance) =>
       'experience': instance.experience,
       'salary': instance.salary,
       'benefits': instance.benefits,
-      'category': instance.category?.toJson(),
       'company': instance.company?.toJson(),
       'vacancyId': instance.vacancyId,
     };
