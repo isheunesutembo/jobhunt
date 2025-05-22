@@ -30,9 +30,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       body: RefreshIndicator(
         backgroundColor: Colors.black,
-        onRefresh: () {
-          return ref.refresh(getVacanciesProvider.future);
-        },
+        onRefresh: () async {
+        return  ref.refresh(searchVacancy.future);
+         },
+   
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -149,7 +150,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         builder: (context) =>
                                             const VacancyDetailsScreen(),
                                         settings: RouteSettings(
-                                            arguments: vacancies)));
+                                            arguments: vacancies[index])));
                               },
                               child: VacancyItemWidget(
                                 vacancy: vacancies[index],

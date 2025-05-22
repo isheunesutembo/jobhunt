@@ -18,44 +18,45 @@ class VacanciesByCategoryScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
         final category = ModalRoute.of(context)!.settings.arguments as Category;
     final vacancies = ref.watch(getVacancyBycategoryProvider(category.categoryId.toString()));
-    return vacancies.when(
-        data: (data) {
-          return data.isNotEmpty?ListView.builder(
-              scrollDirection: Axis.vertical,
-              physics:const NeverScrollableScrollPhysics(),
-              itemCount: data.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const VacancyDetailsScreen(
-                                ),settings: RouteSettings(arguments: data[index])));
-                    },
-                    child: VacancyItemWidget(
-                      vacancy: data[index],
-                    ));
-              }): Scaffold(body: Column(
-                children: [
-                  const SizedBox(height: 30,),
-                    Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                GestureDetector(onTap:(){
-                  Navigator.pop(context);
-                },child: GestureDetector(onTap: (){
-                  Navigator.pop(context);
-                },child: CustomCircleIconWidget(icon: Image.asset("assets/images/backicon.png")))),
-                
-              ],),
-            ),
-                  const Center(child: Text("No vacancies"),),
-                ],
-              ));
-        },
-        error: (error, stackTrace) => ErrorText(error: error.toString()),
-        loading: () => const Loader());
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(category.title.toString()
+        ,style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black
+        ),),
+       
+        
+      ),
+      body: vacancies.when(
+          data: (data) {
+            return data.isNotEmpty?ListView.builder(
+                scrollDirection: Axis.vertical,
+                physics:const BouncingScrollPhysics(),
+                itemCount: data.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const VacancyDetailsScreen(
+                                  ),settings: RouteSettings(arguments: data[index])));
+                      },
+                      child: VacancyItemWidget(
+                        vacancy: data[index],
+                      ));
+                }): Center(
+              child: Text("No vacancies found in ${category.title.toString()}",
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              ),));
+          },
+          error: (error, stackTrace) => ErrorText(error: error.toString()),
+          loading: () => const Loader()),
+    );
   }
 }
