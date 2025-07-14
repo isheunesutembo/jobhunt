@@ -1,16 +1,42 @@
-# jobhunt
+# 💼 JobBoard App
 
-A new Flutter project.
+A full-stack Job Board web application that allows users to browse job vacancies, save their favorite listings, upload resumes, and send applications directly to employers.
 
-## Getting Started
+This app features a robust RESTful API built with **Express.js** and **MongoDB**, enabling seamless job listing management and user interaction.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 👨‍💼 User Features
+- 🕵️ Browse available job vacancies
+- ⭐ Add jobs to favorites
+- 📄 Upload and manage resumes
+- 📬 Submit job applications
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### ⚙️ API Features
+- ✅ RESTful API using **Express.js**
+- 🗃️ MongoDB for data persistence
+- 🔐 JWT-based authentication and authorization
+- 🧑‍💻 Admin routes for posting, updating, and deleting jobs
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: _Coming soon / Integrate with any front-end framework_
+- **Backend**: [Express.js](https://expressjs.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/)
+- **Authentication**: JWT (JSON Web Tokens)
+- **ORM**: Mongoose
+
+---
+
+## 📦 Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/isheunesutembo/jobhunt.git
+cd jobhunt
+
