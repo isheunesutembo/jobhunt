@@ -1,7 +1,6 @@
 
 import'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobhunt/features/vacancy/models/company.dart';
-import '../../jobcategory/models/category.dart';
 part 'vacancy.freezed.dart';
 part 'vacancy.g.dart';
 List<Vacancy> vacanciesFromJson(dynamic str) =>

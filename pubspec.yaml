@@ -45,6 +45,7 @@ dependencies:
   cached_network_image: ^3.3.1
   fpdart: ^2.0.0-dev.3
   flutter_bloc: ^8.1.4
+  
   #internet_connection_checker_plus: ^2.2.0
   file_picker: ^10.0.0
   image_picker: ^1.1.2
@@ -56,6 +57,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+ 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

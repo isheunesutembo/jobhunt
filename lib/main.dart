@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/features/profile/screens/edit_profile_screen.dart';
 import 'package:jobhunt/features/resume/screens/add_resume_screen.dart';
+import 'package:jobhunt/features/vacancy/screens/all_vacancies_screen.dart';
 import 'package:jobhunt/features/vacancyapplication/screens/application_confirmation_screen.dart';
 import 'package:jobhunt/features/favorite/screens/favouritescreen.dart';
 import 'package:jobhunt/features/auth/screens/log_in_screen.dart';
@@ -50,7 +51,8 @@ class MyApp extends ConsumerWidget {
         '/resumedetailscreen':(context)=>const ResumeDetailScreen(),
         '/applicationconfirmationscreen':(context)=>const ApplicationConfirmationScreen(),
         '/editprofilescreen':(context)=>const EditProfileScreen(),
-        "/applicationscreen":(context)=>const ApplicationsScreen()
+        "/applicationscreen":(context)=>const ApplicationsScreen(),
+        "/allvacanciesscreen":(context)=>const AllVacanciesScreen()
 
       },
       

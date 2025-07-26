@@ -50,13 +50,15 @@ class ApplicationRepository {
     }
   }
 
-  Future<Either<AppFailure, List<ApplicationModel>>> getUserApplications(String userId) async {
+  Future<Either<AppFailure, List<ApplicationModel>>> getUserApplications(
+      String userId) async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
       "Content-Type": "application/json",
       "Authorization": "Bearer ${_localAuthRepository.getUserToken()}"
     };
-    var url = Uri.http(AppConfig.baseUrl, "${AppConfig.applicationsByUserUrl}/$userId");
+    var url = Uri.http(
+        AppConfig.baseUrl, "${AppConfig.applicationsByUserUrl}/$userId");
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
 

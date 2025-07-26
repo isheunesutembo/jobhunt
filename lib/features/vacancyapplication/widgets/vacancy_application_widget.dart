@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/vacancy/controllers/vacancycontroller.dart';
+import 'package:jobhunt/features/vacancy/models/vacancy.dart';
 import 'package:jobhunt/features/vacancy/widgets/vacancy_tags_list.dart';
 import 'package:jobhunt/util/errortext.dart';
 import 'package:jobhunt/util/loader.dart';
@@ -31,11 +32,6 @@ class VacancyApplicationWidget extends ConsumerWidget {
             const SizedBox(
               height: 10,
             ),
-           
-           
-                  
-           
-        
            
           ],
         ),

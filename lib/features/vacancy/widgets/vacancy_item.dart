@@ -66,7 +66,7 @@ class VacancyItemWidget extends ConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                          vacancy.company!.logo!=null?   CircleAvatar(backgroundColor: Colors.white,radius: 30,backgroundImage: NetworkImage(vacancy.company!.logo.toString()),):
-                         const CircleAvatar(backgroundColor: Colors.white,radius: 30,backgroundImage:AssetImage("assets/images/person.png") ),
+                     const CircleAvatar(backgroundColor: Colors.white,radius: 30,backgroundImage:AssetImage("assets/images/person.png") ),
                 Text(vacancy.company!.name.toString(),
                 style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.black),)
               ],),

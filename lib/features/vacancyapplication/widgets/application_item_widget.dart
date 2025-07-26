@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
-
+import 'package:flutter_riverpod/flutter_riverpod.dart' ;
 import 'package:jobhunt/features/vacancyapplication/models/application_model.dart';
-import 'package:jobhunt/features/vacancyapplication/widgets/company_profile_widget.dart';
 import 'package:jobhunt/features/vacancyapplication/widgets/vacancy_application_widget.dart';
 
 class ApplicationItemWidget extends ConsumerWidget {
@@ -30,8 +28,8 @@ class ApplicationItemWidget extends ConsumerWidget {
               
              ],
            ),
-           VacancyApplicationWidget( vacancyId: applicationModel.vacancyId.toString(),),
-          Padding(
+       VacancyApplicationWidget( vacancyId: applicationModel.vacancyId!,),
+         Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(applicationModel.company!.name.toString(),
             style: const TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),),

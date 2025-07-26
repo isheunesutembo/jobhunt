@@ -103,24 +103,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
               const JobCategoriesWidget(),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(right: 8, left: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Jobs",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
                           fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      "See All",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, "/allvacanciesscreen");
+                      },
+                      child: const Text(
+                        "See All",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300),
+                      ),
                     ),
                   ],
                 ),

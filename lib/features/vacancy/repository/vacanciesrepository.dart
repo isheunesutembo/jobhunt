@@ -16,12 +16,15 @@ class VacanciesRepository {
   final http.Client _client;
   VacanciesRepository({required http.Client client}) : _client = client;
 
-  Future<Either<AppFailure, List<Vacancy>>> getJobVacancies() async {
+  Future<Either<AppFailure, List<Vacancy>>> getJobVacancies({required int page,required int limit}) async {
     Map<String, String> requestHeaders = {
       "Accept": "application/json",
       "Content-Type": "application/json"
     };
-    var url = Uri.http(AppConfig.baseUrl, AppConfig.vacanciesUrl);
+    var url = Uri.http(AppConfig.baseUrl, AppConfig.vacanciesUrl,{
+      'page':page.toString(),
+      'limit':limit.toString()
+    });
     var response = await _client.get(url, headers: requestHeaders);
     var data = jsonDecode(response.body);
 
