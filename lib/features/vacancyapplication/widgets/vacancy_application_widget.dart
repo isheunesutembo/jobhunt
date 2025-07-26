@@ -7,13 +7,13 @@ import 'package:jobhunt/util/errortext.dart';
 import 'package:jobhunt/util/loader.dart';
 
 class VacancyApplicationWidget extends ConsumerWidget {
-  String vacancyId;
-   VacancyApplicationWidget({super.key,required this.vacancyId});
+  Vacancy vacancy;
+   VacancyApplicationWidget({super.key,required this.vacancy});
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final vacancies=ref.watch(getVacancyById(vacancyId));
-    return vacancies.when(data: (data){
+   
+
       return SizedBox(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -22,7 +22,7 @@ class VacancyApplicationWidget extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                data.title.toString(),
+                vacancy.title.toString(),
                 style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -36,6 +36,6 @@ class VacancyApplicationWidget extends ConsumerWidget {
           ],
         ),
       );
-    }, error: (error,stackTrace)=>ErrorText(error: error.toString()), loading: ()=>Loader());
+    
   }
 }

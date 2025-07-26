@@ -26,7 +26,7 @@ mixin _$ApplicationModel {
   Company? get company => throw _privateConstructorUsedError;
   Resume? get resume => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
-  String? get vacancyId => throw _privateConstructorUsedError;
+  Vacancy? get vacancyId => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
 
@@ -52,12 +52,13 @@ abstract class $ApplicationModelCopyWith<$Res> {
       Company? company,
       Resume? resume,
       String? userId,
-      String? vacancyId,
+      Vacancy? vacancyId,
       String? createdAt,
       String? updatedAt});
 
   $CompanyCopyWith<$Res>? get company;
   $ResumeCopyWith<$Res>? get resume;
+  $VacancyCopyWith<$Res>? get vacancyId;
 }
 
 /// @nodoc
@@ -108,7 +109,7 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
       vacancyId: freezed == vacancyId
           ? _value.vacancyId
           : vacancyId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Vacancy?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -147,6 +148,20 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
       return _then(_value.copyWith(resume: value) as $Val);
     });
   }
+
+  /// Create a copy of ApplicationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VacancyCopyWith<$Res>? get vacancyId {
+    if (_value.vacancyId == null) {
+      return null;
+    }
+
+    return $VacancyCopyWith<$Res>(_value.vacancyId!, (value) {
+      return _then(_value.copyWith(vacancyId: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -163,7 +178,7 @@ abstract class _$$ApplicationModelImplCopyWith<$Res>
       Company? company,
       Resume? resume,
       String? userId,
-      String? vacancyId,
+      Vacancy? vacancyId,
       String? createdAt,
       String? updatedAt});
 
@@ -171,6 +186,8 @@ abstract class _$$ApplicationModelImplCopyWith<$Res>
   $CompanyCopyWith<$Res>? get company;
   @override
   $ResumeCopyWith<$Res>? get resume;
+  @override
+  $VacancyCopyWith<$Res>? get vacancyId;
 }
 
 /// @nodoc
@@ -219,7 +236,7 @@ class __$$ApplicationModelImplCopyWithImpl<$Res>
       vacancyId: freezed == vacancyId
           ? _value.vacancyId
           : vacancyId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Vacancy?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -261,7 +278,7 @@ class _$ApplicationModelImpl implements _ApplicationModel {
   @override
   final String? userId;
   @override
-  final String? vacancyId;
+  final Vacancy? vacancyId;
   @override
   final String? createdAt;
   @override
@@ -319,7 +336,7 @@ abstract class _ApplicationModel implements ApplicationModel {
       final Company? company,
       final Resume? resume,
       final String? userId,
-      final String? vacancyId,
+      final Vacancy? vacancyId,
       final String? createdAt,
       final String? updatedAt}) = _$ApplicationModelImpl;
 
@@ -338,7 +355,7 @@ abstract class _ApplicationModel implements ApplicationModel {
   @override
   String? get userId;
   @override
-  String? get vacancyId;
+  Vacancy? get vacancyId;
   @override
   String? get createdAt;
   @override

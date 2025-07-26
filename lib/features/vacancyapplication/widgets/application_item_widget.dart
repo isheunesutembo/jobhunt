@@ -28,7 +28,7 @@ class ApplicationItemWidget extends ConsumerWidget {
               
              ],
            ),
-       VacancyApplicationWidget( vacancyId: applicationModel.vacancyId!,),
+       VacancyApplicationWidget( vacancy: applicationModel.vacancyId!,),
          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(applicationModel.company!.name.toString(),

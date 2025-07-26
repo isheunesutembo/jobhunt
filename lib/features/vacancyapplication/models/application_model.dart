@@ -17,7 +17,7 @@ abstract class ApplicationModel with _$ApplicationModel {
   Company ? company,
   Resume? resume,
   String? userId,
-  String? vacancyId,
+  Vacancy? vacancyId,
   String? createdAt,
   String? updatedAt,
 
