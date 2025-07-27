@@ -23,8 +23,8 @@ class ApplicationContoller extends AsyncNotifier<AsyncValue<void>>{
   return  const AsyncValue.data(null);
  }
 
- Future<void> sendApplication(String vacancyId,String resumeId,String companyId,String userId,BuildContext context)async{
- final user=await _applicationRepository.sendApplication(vacancyId, resumeId, companyId, userId);
+ Future<void> sendApplication(String vacancyId,String resumeId,String companyId,String userId,String status,BuildContext context)async{
+ final user=await _applicationRepository.sendApplication(vacancyId, resumeId, companyId, userId,status);
   final val= switch(user){
     Left(value:final l)=> showSnackBar(context,l.message),
     Right(value:final r)=>Navigator.pushNamed(context, "/applicationconfirmationscreen")

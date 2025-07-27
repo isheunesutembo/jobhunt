@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 final authRepositoryProvider = Provider((ref) => AuthRepository(
     localAuthRepository: ref.watch(localAuthRepositoryProvider),client: ref.watch(httpProvider)));
 
-class AuthRepository {
+class AuthRepository { 
   final LocalAuthRepository _localAuthRepository;
   final http.Client _client;
 

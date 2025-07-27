@@ -71,14 +71,14 @@ class VacancyController extends AsyncNotifier<PaginationState<Vacancy>>{
 
     state = AsyncData(state.value!.copyWith(isLoadingMore: true));
     final nextPage = _page + 1;
-    final newCarListings = await getVacancies(page: nextPage);
-    if (newCarListings.isNotEmpty) {
+    final newVacancies = await getVacancies(page: nextPage);
+    if (newVacancies.isNotEmpty) {
       _page = nextPage;
     }
     state = AsyncData(state.value!.copyWith(
-        data: [...state.value!.data, ...newCarListings],
+        data: [...state.value!.data, ...newVacancies],
         isLoadingMore: false,
-        hasNext: newCarListings.length == _limit));
+        hasNext: newVacancies.length == _limit));
   }
   Future<List<Vacancy>>getVacanciesByCategory(String categoryId)async{
     final res=await _vacanciesRepository.getJobVacanciesByCategory(categoryId);

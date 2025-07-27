@@ -58,36 +58,54 @@ class _AllVacanciesScreenState extends ConsumerState<AllVacanciesScreen> {
         ),),
        
         
-      ),body: vacancies.when(
-          data: (data) {
-            return data.isNotEmpty?ListView.builder(
-                scrollDirection: Axis.vertical,
-                physics:const BouncingScrollPhysics(),
-                itemCount: data.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const VacancyDetailsScreen(
-                                  ),settings: RouteSettings(arguments: data[index])));
-                      },
-                      child: VacancyItemWidget(
-                        vacancy: data[index],
-                      ));
-                }): const Center(
-              child: Text("No vacancies ",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.bold
-              ),));
-          },
-          error: (error, stackTrace) => ErrorText(error: error.toString()),
-          loading: () => const Loader()),),
-      );
+      ),body: 
+         
+            Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      physics:const BouncingScrollPhysics(),
+                      itemCount: data.data.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        if(index<data.data.length){
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const VacancyDetailsScreen(
+                                        ),settings: RouteSettings(arguments: data.data[index])));
+                            },
+                            child: VacancyItemWidget(
+                              vacancy: data.data[index],
+                            ));
+                        }else{
+                          const Center(child: LinearProgressIndicator(color: Colors.orange,),);
+                        }
+                        
+                      }),
+                ),
+                if(state.value!.hasNext!||(state.isLoading&&state.hasValue))...{
+                   const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: LinearProgressIndicator(
+                 backgroundColor: Colors.orange,
+                  
+                  ),
+                ),
+              
+                }
+              ],
+            ),
+                
+
+                
+                
+          
+          
+      ));
 
     }, error: (error,stackTrace)=>ErrorText(error: error.toString()), loading: ()=>const Loader());
   }

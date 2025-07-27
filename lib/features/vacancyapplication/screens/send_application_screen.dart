@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobhunt/features/resume/models/resume.dart';
 import 'package:jobhunt/features/vacancyapplication/controller/application_controller.dart';
 import 'package:jobhunt/features/vacancy/models/vacancy.dart';
-
 import 'package:jobhunt/features/auth/repository/localauthrepository.dart';
 import 'package:jobhunt/features/resume/widgets/resume_widget.dart';
 
@@ -36,11 +35,14 @@ class _SendApplicationScreenState extends ConsumerState<SendApplicationScreen> {
           child: Column(
             children: [
               const Text(
-                "You Resume",
+                "Your Resume",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               ResumeWidget(resume: widget.resume),
               const SizedBox(
@@ -57,6 +59,7 @@ class _SendApplicationScreenState extends ConsumerState<SendApplicationScreen> {
                             widget.resume.id.toString(),
                             widget.vacancy.company!.companyId.toString(),
                             userId!,
+                            "Pending",
                             context);
                       },
                       style: ElevatedButton.styleFrom(

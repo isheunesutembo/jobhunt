@@ -24,7 +24,7 @@ class ApplicationRepository {
         _client = client;
 
   Future<Either<AppFailure, ApplicationModel>> sendApplication(String vacancyId,
-      String resumeId, String companyId, String userId) async {
+      String resumeId, String companyId, String userId,String status) async {
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
       "Authorization": "Bearer ${_localAuthRepository.getUserToken()}"
@@ -35,6 +35,7 @@ class ApplicationRepository {
         body: jsonEncode({
           "vacancyId": vacancyId,
           "resume": resumeId,
+          "status":status,
           "company": companyId,
           "userId": userId
         }));

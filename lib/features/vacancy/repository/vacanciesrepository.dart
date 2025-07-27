@@ -73,6 +73,7 @@ class VacanciesRepository {
 
     try {
       if (response.statusCode == 200) {
+       
         return Right(vacanciesFromJson(data["vacancies"]));
       } else {
         return Left(AppFailure(message: data['message']));

@@ -20,6 +20,7 @@ class _ResumeWidgetState extends ConsumerState<ResumeWidget> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        color: Colors.white,
         child: SizedBox(
           height: 113,
           child: Padding(
