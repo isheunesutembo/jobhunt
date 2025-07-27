@@ -40,3 +40,5 @@ This app features a robust RESTful API built with **Express.js** and **MongoDB**
 git clone https://github.com/isheunesutembo/jobhunt.git
 cd jobhunt
 
+<img src="image.png"/>
+
