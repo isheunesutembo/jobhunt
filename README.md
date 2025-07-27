@@ -1,3 +1,5 @@
+<img src="image.jpeg"/>
+
 # 💼 JobBoard App
 
 A full-stack Job Board web application that allows users to browse job vacancies, save their favorite listings, upload resumes, and send applications directly to employers.
