@@ -1,4 +1,4 @@
-<img src="image.jpeg"/>
+<img src="Image.jpeg"/>
 
 # 💼 JobBoard App
 
