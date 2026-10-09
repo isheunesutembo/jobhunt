@@ -43,6 +43,9 @@ git clone https://github.com/isheunesutembo/jobhunt.git
 cd jobhunt
 
 <img src="image.jpeg"/>
+
+
+
 ## Github Actions Workflow
 name: Flutter CI
 
@@ -89,4 +92,5 @@ jobs:
         with:
           name: flutter-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
 
